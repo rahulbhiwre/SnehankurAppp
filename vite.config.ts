@@ -4,19 +4,19 @@ import path from "path";
 
 export default defineConfig({
   plugins: [react()],
-  root: "client", // Set client as the root directory
+  root: "client", // Set 'client' as root to match project structure
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "client", "src"),
     },
   },
   build: {
-    outDir: "../dist", // Output build to dist outside client folder
-    emptyOutDir: true, // Ensure old files are removed
+    outDir: "dist", // Keep output inside client/
+    emptyOutDir: true, // Clears old files before building
   },
   server: {
     port: 8081,
     open: true,
   },
-  base: "./", // Important for Cloudflare Pages deployment
+  base: "/", // Use "/" for Cloudflare Pages
 });
