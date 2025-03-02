@@ -27,7 +27,7 @@ export default function Navbar() {
           <div className="flex-shrink-0 flex items-center">
             <Link href="/">
               <img 
-                src="/attached_assets/snehakurLogo_50.jpg" 
+                src="/snehakurLogo_50.jpg" 
                 alt="Snehankur Logo" 
                 className="h-16 w-auto"
               />
@@ -60,7 +60,7 @@ export default function Navbar() {
                 <div className="flex flex-col space-y-4 mt-4">
                   <div className="flex justify-center mb-4">
                     <img 
-                      src="/attached_assets/snehakurLogo_50.jpg" 
+                      src="/snehakurLogo_50.jpg" 
                       alt="Snehankur Logo" 
                       className="h-16 w-auto"
                     />
