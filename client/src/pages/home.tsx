@@ -3,30 +3,10 @@ import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 
 export default function Home() {
-  // Define banner images
-  const bannerImages = [
-    {
-      src: "https://images.unsplash.com/photo-1489710437720-ebb67ec84dd2",
-      alt: "Happy children with caregivers"
-    },
-    {
-      src: "https://images.unsplash.com/photo-1472586662442-3eec04b9dbda",
-      alt: "Children playing"
-    },
-    {
-      src: "https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a",
-      alt: "Group activity"
-    },
-    {
-      src: "https://images.unsplash.com/photo-1526529613260-5f7cad1eb4b4",
-      alt: "Our facility"
-    }
-  ];
-
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <Banner images={bannerImages} /> {/* Added Banner component with images */}
+      <Banner/> {/* Added Banner component here */}
       <section className="relative py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-orange-50 to-orange-100">
         <div className="max-w-7xl mx-auto">
           <div className="text-center">
