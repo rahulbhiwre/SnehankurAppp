@@ -23,10 +23,14 @@ export default function Navbar() {
   return (
     <nav className="bg-white shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
+        <div className="flex justify-between h-20">
           <div className="flex-shrink-0 flex items-center">
             <Link href="/">
-              <span className="text-2xl font-bold text-primary">Snehankur</span>
+              <img 
+                src="/attached_assets/snehakurLogo_50.jpg" 
+                alt="Snehankur Logo" 
+                className="h-16 w-auto"
+              />
             </Link>
           </div>
 
@@ -54,6 +58,13 @@ export default function Navbar() {
               </SheetTrigger>
               <SheetContent>
                 <div className="flex flex-col space-y-4 mt-4">
+                  <div className="flex justify-center mb-4">
+                    <img 
+                      src="/attached_assets/snehakurLogo_50.jpg" 
+                      alt="Snehankur Logo" 
+                      className="h-16 w-auto"
+                    />
+                  </div>
                   {navigation.map((item) => (
                     <Link key={item.name} href={item.href}>
                       <Button
