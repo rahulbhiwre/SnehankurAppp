@@ -8,9 +8,12 @@ export default function Home() {
       <section className="relative py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-orange-50 to-orange-100">
         <div className="max-w-7xl mx-auto">
           <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-              Welcome to <span className="text-primary">Snehankur</span>
+            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-4">
+              Welcome to <span className="text-primary">स्नेहांकुर</span>
             </h1>
+            <p className="text-2xl text-primary mb-6 font-semibold">
+              सेवा समर्पण सामर्थ्य
+            </p>
             <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
               Providing love, care, and support to children in need. Join us in making a difference in their lives.
             </p>
