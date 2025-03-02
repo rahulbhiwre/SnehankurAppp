@@ -1,3 +1,4 @@
+import { Banner } from "@/components/Banner";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 
@@ -5,6 +6,7 @@ export default function Home() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
+      <Banner/> {/* Added Banner component here */}
       <section className="relative py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-orange-50 to-orange-100">
         <div className="max-w-7xl mx-auto">
           <div className="text-center">
