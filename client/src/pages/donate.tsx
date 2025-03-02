@@ -1,14 +1,33 @@
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { FaQrcode, FaUniversity, FaMobileAlt } from "react-icons/fa";
+import { FaQrcode, FaUniversity, FaMobileAlt, FaCopy } from "react-icons/fa";
+import { useState } from "react";
+import { useToast } from "@/hooks/use-toast";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 export default function Donate() {
+  const [showQR, setShowQR] = useState(false);
+  const { toast } = useToast();
+  const upiId = "snehankur@upi";
+
+  const copyUPIId = async () => {
+    await navigator.clipboard.writeText(upiId);
+    toast({
+      description: "Copied to clipboard!",
+    });
+  };
+
   return (
     <div className="py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Support Our Cause</h1>
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">Donate</h1>
           <p className="text-lg text-gray-600">
             Your contribution helps us provide better care and opportunities for our children
           </p>
@@ -26,14 +45,35 @@ export default function Donate() {
                 Scan the QR code or use our UPI ID for instant transfer
               </p>
               <div className="bg-gray-50 p-4 rounded-lg text-center">
-                <p className="font-medium text-gray-900 mb-2">UPI ID: snehankur@upi</p>
-                <Button variant="outline" className="w-full sm:w-auto">
+                <div className="flex items-center justify-center gap-2 mb-4">
+                  <p className="font-medium text-gray-900">UPI ID: {upiId}</p>
+                  <Button variant="ghost" size="icon" onClick={copyUPIId}>
+                    <FaCopy className="h-4 w-4" />
+                  </Button>
+                </div>
+                <Button variant="outline" className="w-full sm:w-auto" onClick={() => setShowQR(true)}>
                   <FaQrcode className="mr-2 h-4 w-4" />
                   Show QR Code
                 </Button>
               </div>
             </CardContent>
           </Card>
+
+          {/* QR Code Dialog */}
+          <Dialog open={showQR} onOpenChange={setShowQR}>
+            <DialogContent className="sm:max-w-md">
+              <DialogHeader>
+                <DialogTitle>Scan QR Code</DialogTitle>
+              </DialogHeader>
+              <div className="flex items-center justify-center p-6">
+                <img
+                  src="/qr-code.png"
+                  alt="UPI QR Code"
+                  className="max-w-full h-auto"
+                />
+              </div>
+            </DialogContent>
+          </Dialog>
 
           {/* Bank Transfer Section */}
           <Card>

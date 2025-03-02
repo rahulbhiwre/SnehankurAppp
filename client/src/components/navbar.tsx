@@ -8,17 +8,17 @@ import {
 import { Menu } from "lucide-react";
 import { useState } from "react";
 
-const navigation = [
-  { name: "Home", href: "/" },
-  { name: "About", href: "/about" },
-  { name: "Gallery", href: "/gallery" },
-  { name: "Donate", href: "/donate" },
-  { name: "Contact", href: "/contact" },
-];
-
 export default function Navbar() {
   const [location] = useLocation();
   const [open, setOpen] = useState(false);
+
+  const navigation = [
+    { name: "Home", href: "/" },
+    { name: "About", href: "/about" },
+    { name: "Gallery", href: "/gallery" },
+    { name: "Donate", href: "/donate" },
+    { name: "Contact", href: "/contact" },
+  ];
 
   return (
     <nav className="bg-white shadow-sm">
