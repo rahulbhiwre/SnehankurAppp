@@ -1,18 +1,62 @@
 
-/* Add this to the top of your existing CSS file */
+/* Carousel animations and styling */
 @keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from { opacity: 0; transform: scale(1.05); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slide-in {
+  from { transform: translateX(10%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
 }
 
 .carousel-fade {
-  animation: fade-in 0.5s ease-in-out;
+  animation: fade-in 0.8s ease-out;
 }
 
-/* Make sure the carousel navigation is visible on mobile */
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel-content {
+  transition: transform 0.5s ease-out;
+}
+
+.carousel-item {
+  transition: opacity 0.5s ease-out;
+}
+
+/* Indicators and navigation styling */
+.carousel-indicators {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  z-index: 20;
+}
+
+.carousel-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.carousel-indicator.active {
+  background-color: white;
+  transform: scale(1.2);
+}
+
+/* Make carousel navigation visible and attractive on all devices */
 @media (max-width: 640px) {
   .embla__button {
     transform: scale(0.8);
+    opacity: 0.9;
   }
 }
 

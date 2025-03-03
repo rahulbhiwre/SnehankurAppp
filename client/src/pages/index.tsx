@@ -29,17 +29,17 @@ export default function Home() {
     <div className="flex flex-col min-h-screen">
       {/* Hero Section with Carousel */}
       <section className="relative">
-        <Carousel className="w-full" opts={{ loop: true, duration: 30 }}>
-          <CarouselContent>
+        <Carousel className="w-full carousel-container" opts={{ loop: true, duration: 20, watchDrag: true }}>
+          <CarouselContent className="carousel-content">
             {carouselImages.map((image, index) => (
-              <CarouselItem key={index}>
-                <div className="relative h-[60vh] md:h-[70vh] w-full">
+              <CarouselItem key={index} className="carousel-item carousel-fade">
+                <div className="relative h-[60vh] md:h-[70vh] w-full overflow-hidden">
                   <img 
                     src={image.src} 
                     alt={image.alt}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover transform transition-transform duration-500 hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                  <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
                     <div className="text-center text-white px-4">
                       <motion.h1 
                         className="text-4xl md:text-6xl font-bold mb-4"
@@ -80,8 +80,17 @@ export default function Home() {
             ))}
           </CarouselContent>
           <div className="absolute z-10 inset-0 flex items-center justify-between p-4">
-            <CarouselPrevious className="relative left-0 h-10 w-10 rounded-full bg-white/70 hover:bg-white" />
-            <CarouselNext className="relative right-0 h-10 w-10 rounded-full bg-white/70 hover:bg-white" />
+            <CarouselPrevious className="relative left-0 h-12 w-12 rounded-full bg-white/80 hover:bg-white transition-all duration-300 shadow-lg" />
+            <CarouselNext className="relative right-0 h-12 w-12 rounded-full bg-white/80 hover:bg-white transition-all duration-300 shadow-lg" />
+          </div>
+          <div className="absolute z-10 bottom-4 left-0 right-0 flex justify-center gap-2">
+            {carouselImages.map((_, index) => (
+              <button
+                key={index}
+                className="w-3 h-3 rounded-full bg-white/50 hover:bg-white/90 transition-all duration-300"
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
           </div>
         </Carousel>
       </section>
