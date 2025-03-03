@@ -46,8 +46,8 @@ export default function Contact() {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
     try {
-      // This is a dummy API endpoint - replace with your actual endpoint later
-      const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
+      // Use our local API endpoint
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
