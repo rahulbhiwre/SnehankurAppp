@@ -40,7 +40,11 @@ export default function Navbar() {
               <Link key={item.name} href={item.href}>
                 <Button
                   variant={location === item.href ? "default" : "ghost"}
-                  className="text-sm font-medium"
+                  className={`text-sm font-medium transition-all duration-300 transform hover:scale-105 ${
+                    location === item.href 
+                      ? "bg-primary" 
+                      : "hover:bg-orange-100 hover:text-orange-600"
+                  }`}
                 >
                   {item.name}
                 </Button>
@@ -68,7 +72,7 @@ export default function Navbar() {
                       >
                         <Button
                           variant={location === item.href ? "default" : "ghost"}
-                          className={`w-full justify-start text-base ${
+                          className={`w-full justify-start text-base transition-all duration-300 transform hover:scale-105 ${
                             location === item.href 
                               ? "bg-orange-100 text-orange-600" 
                               : "hover:bg-orange-50 hover:text-orange-500"

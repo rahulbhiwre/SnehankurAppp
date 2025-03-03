@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
@@ -13,12 +14,19 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { FaFacebook, FaInstagram, FaWhatsapp } from "react-icons/fa";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { CheckCircle, Loader2 } from "lucide-react";
 
 const formSchema = z.object({
-  name: z.string().min(2, "Name must be at least 2 characters"),
-  email: z.string().email("Invalid email address"),
-  phone: z.string().min(10, "Phone number must be at least 10 digits"),
-  message: z.string().min(10, "Message must be at least 10 characters"),
+  name: z.string().min(2, "Name must be at least 2 characters").nonempty("Name is required"),
+  email: z.string().email("Invalid email address").nonempty("Email is required"),
+  phone: z.string()
+    .regex(/^\d{10}$/, "Phone number must be exactly 10 digits")
+    .nonempty("Phone number is required"),
+  message: z.string()
+    .min(10, "Message must be at least 10 characters")
+    .max(100, "Message cannot exceed 100 characters")
+    .nonempty("Message is required"),
 });
 
 export default function Contact() {
@@ -32,9 +40,34 @@ export default function Contact() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-    // Handle form submission
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+  
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    setIsSubmitting(true);
+    try {
+      // This is a dummy API endpoint - replace with your actual endpoint later
+      const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(values),
+      });
+      
+      if (response.ok) {
+        setSubmitSuccess(true);
+        form.reset();
+        // Reset success message after 3 seconds
+        setTimeout(() => {
+          setSubmitSuccess(false);
+        }, 3000);
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -108,11 +141,15 @@ export default function Contact() {
                   name="name"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Name</FormLabel>
+                      <FormLabel className="font-medium">Name</FormLabel>
                       <FormControl>
-                        <Input placeholder="Your name" {...field} />
+                        <Input 
+                          placeholder="Your name" 
+                          className="focus-visible:ring-orange-500 transition-all" 
+                          {...field} 
+                        />
                       </FormControl>
-                      <FormMessage />
+                      <FormMessage className="text-red-500" />
                     </FormItem>
                   )}
                 />
@@ -122,11 +159,16 @@ export default function Contact() {
                   name="email"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Email</FormLabel>
+                      <FormLabel className="font-medium">Email</FormLabel>
                       <FormControl>
-                        <Input placeholder="Your email" {...field} />
+                        <Input 
+                          placeholder="Your email" 
+                          className="focus-visible:ring-orange-500 transition-all" 
+                          type="email"
+                          {...field} 
+                        />
                       </FormControl>
-                      <FormMessage />
+                      <FormMessage className="text-red-500" />
                     </FormItem>
                   )}
                 />
@@ -136,11 +178,17 @@ export default function Contact() {
                   name="phone"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Phone</FormLabel>
+                      <FormLabel className="font-medium">Phone</FormLabel>
                       <FormControl>
-                        <Input placeholder="Your phone number" {...field} />
+                        <Input 
+                          placeholder="10 digit phone number" 
+                          className="focus-visible:ring-orange-500 transition-all" 
+                          inputMode="numeric"
+                          pattern="[0-9]*"
+                          {...field} 
+                        />
                       </FormControl>
-                      <FormMessage />
+                      <FormMessage className="text-red-500" />
                     </FormItem>
                   )}
                 />
@@ -150,21 +198,45 @@ export default function Contact() {
                   name="message"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Message</FormLabel>
+                      <div className="flex justify-between">
+                        <FormLabel className="font-medium">Message</FormLabel>
+                        <span className="text-xs text-gray-500">
+                          {field.value?.length || 0}/100 characters
+                        </span>
+                      </div>
                       <FormControl>
                         <Textarea
-                          placeholder="Your message"
-                          className="min-h-[120px]"
+                          placeholder="Your message (10-100 characters)"
+                          className="min-h-[120px] focus-visible:ring-orange-500 transition-all"
+                          maxLength={100}
                           {...field}
                         />
                       </FormControl>
-                      <FormMessage />
+                      <FormMessage className="text-red-500" />
                     </FormItem>
                   )}
                 />
 
-                <Button type="submit" className="w-full">
-                  Send Message
+                {submitSuccess && (
+                  <Alert className="bg-green-50 text-green-700 border border-green-200 mb-4">
+                    <CheckCircle className="h-4 w-4 mr-2" />
+                    <AlertDescription>Message sent successfully!</AlertDescription>
+                  </Alert>
+                )}
+                
+                <Button 
+                  type="submit" 
+                  className="w-full bg-orange-500 hover:bg-orange-600 text-white transition-colors duration-300"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      Sending...
+                    </>
+                  ) : (
+                    "Send Message"
+                  )}
                 </Button>
               </form>
             </Form>
