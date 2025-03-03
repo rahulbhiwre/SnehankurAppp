@@ -29,10 +29,10 @@ export default function Home() {
     <div className="flex flex-col min-h-screen">
       {/* Hero Section with Carousel */}
       <section className="relative">
-        <Carousel className="w-full carousel-container" opts={{ loop: true, duration: 20, watchDrag: true }}>
+        <Carousel className="w-full carousel-container" opts={{ loop: true, duration: 10, watchDrag: true }} key="home-carousel">
           <CarouselContent className="carousel-content">
             {carouselImages.map((image, index) => (
-              <CarouselItem key={index} className="carousel-item carousel-fade">
+              <CarouselItem key={`slide-${index}-${Date.now()}`} className="carousel-item carousel-fade">
                 <div className="relative h-[60vh] md:h-[70vh] w-full overflow-hidden">
                   <img 
                     src={image.src} 
@@ -80,10 +80,10 @@ export default function Home() {
             ))}
           </CarouselContent>
           <div className="absolute z-10 inset-0 flex items-center justify-between p-4">
-            <CarouselPrevious className="relative left-0 h-12 w-12 rounded-full bg-white/80 hover:bg-white transition-all duration-300 shadow-lg" />
-            <CarouselNext className="relative right-0 h-12 w-12 rounded-full bg-white/80 hover:bg-white transition-all duration-300 shadow-lg" />
+            <CarouselPrevious className="relative left-2 md:left-4 h-12 w-12 rounded-full bg-white/90 hover:bg-white transition-all duration-300 shadow-lg border-2 border-primary" />
+            <CarouselNext className="relative right-2 md:right-4 h-12 w-12 rounded-full bg-white/90 hover:bg-white transition-all duration-300 shadow-lg border-2 border-primary" />
           </div>
-          <div className="absolute z-10 bottom-4 left-0 right-0 flex justify-center gap-2">
+          <div className="absolute z-10 bottom-8 left-0 right-0 flex justify-center gap-3">
             {carouselImages.map((_, index) => (
               <button
                 key={index}
