@@ -19,7 +19,7 @@ export default function Home() {
             </p>
             <div className="flex justify-center gap-4">
               <Link href="/donate">
-                <Button size="lg">Donate Now</Button>
+                <Button size="lg" className="bg-orange-500 hover:bg-orange-600 text-white">Donate</Button>
               </Link>
               <Link href="/contact">
                 <Button variant="outline" size="lg">Contact Us</Button>

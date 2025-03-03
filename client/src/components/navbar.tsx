@@ -52,30 +52,33 @@ export default function Navbar() {
           <div className="flex items-center md:hidden">
             <Sheet open={open} onOpenChange={setOpen}>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon">
-                  <Menu className="h-6 w-6" />
+                <Button variant="ghost" size="icon" className="hover:bg-orange-50">
+                  <Menu className="h-6 w-6 text-orange-600" />
+                  <span className="sr-only">Open menu</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent>
-                <div className="flex flex-col space-y-4 mt-4">
-                  <div className="flex justify-center mb-4">
-                    <img 
-                      src="/snehakurLogo_50.jpg" 
-                      alt="Snehankur Logo" 
-                      className="h-16 w-auto"
-                    />
-                  </div>
-                  {navigation.map((item) => (
-                    <Link key={item.name} href={item.href}>
-                      <Button
-                        variant={location === item.href ? "default" : "ghost"}
-                        className="w-full justify-start"
+              <SheetContent side="right">
+                <div className="mt-6 flow-root">
+                  <div className="space-y-2 py-6">
+                    {navigation.map((item) => (
+                      <Link
+                        key={item.name}
+                        href={item.href}
                         onClick={() => setOpen(false)}
                       >
-                        {item.name}
-                      </Button>
-                    </Link>
-                  ))}
+                        <Button
+                          variant={location === item.href ? "default" : "ghost"}
+                          className={`w-full justify-start text-base ${
+                            location === item.href 
+                              ? "bg-orange-100 text-orange-600" 
+                              : "hover:bg-orange-50 hover:text-orange-500"
+                          }`}
+                        >
+                          {item.name}
+                        </Button>
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               </SheetContent>
             </Sheet>
