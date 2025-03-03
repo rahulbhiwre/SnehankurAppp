@@ -61,9 +61,16 @@ export default function Navbar() {
                   <span className="sr-only">Open menu</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right">
-                <div className="mt-6 flow-root">
-                  <div className="space-y-2 py-6">
+              <SheetContent side="right" className="bg-white shadow-lg border-l border-orange-100">
+                <div className="flex flex-col items-center mt-4 mb-6">
+                  <img 
+                    src="/snehakurLogo_50.jpg" 
+                    alt="Snehankur Logo" 
+                    className="h-12 w-auto mb-4"
+                  />
+                </div>
+                <div className="flow-root">
+                  <div className="space-y-2 py-2">
                     {navigation.map((item) => (
                       <Link
                         key={item.name}
@@ -72,7 +79,7 @@ export default function Navbar() {
                       >
                         <Button
                           variant={location === item.href ? "default" : "ghost"}
-                          className={`w-full justify-start text-base transition-all duration-300 transform hover:scale-105 ${
+                          className={`w-full justify-start text-base font-medium transition-all duration-300 transform hover:scale-105 ${
                             location === item.href 
                               ? "bg-orange-100 text-orange-600" 
                               : "hover:bg-orange-50 hover:text-orange-500"
