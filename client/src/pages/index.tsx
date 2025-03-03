@@ -1,146 +1,53 @@
-
 import { Button } from "@/components/ui/button";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { useEffect, useState, useCallback } from 'react';
-import useEmblaCarousel from 'embla-carousel-react';
-import Autoplay from 'embla-carousel-autoplay';
 
 export default function Home() {
-  // Sample images for the carousel - replace with your actual images
-  const carouselImages = [
-    { 
-      src: "https://images.unsplash.com/photo-1588666309990-d68f08e3d4a6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=600&q=80", 
-      alt: "Children playing together" 
-    },
-    { 
-      src: "https://images.unsplash.com/photo-1511949860663-92c5c57d48a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=600&q=80", 
-      alt: "Education for children" 
-    },
-    { 
-      src: "https://images.unsplash.com/photo-1540479859555-17af45c78602?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=600&q=80", 
-      alt: "Community support" 
-    },
-    { 
-      src: "https://images.unsplash.com/photo-1560252829-804f1aedf1be?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=600&q=80", 
-      alt: "Volunteer activities" 
-    }
-  ];
-
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'center' }, [Autoplay({ delay: 5000, stopOnInteraction: false })]);
-  const [selectedIndex, setSelectedIndex] = useState(0);
-
-  const scrollTo = useCallback((index) => {
-    if (emblaApi) emblaApi.scrollTo(index);
-  }, [emblaApi]);
-
-  const onSelect = useCallback(() => {
-    if (!emblaApi) return;
-    setSelectedIndex(emblaApi.selectedScrollSnap());
-  }, [emblaApi]);
-
-  useEffect(() => {
-    if (!emblaApi) return;
-    
-    emblaApi.on('select', onSelect);
-    onSelect();
-    
-    return () => {
-      emblaApi.off('select', onSelect);
-    };
-  }, [emblaApi, onSelect]);
-
   return (
     <div className="flex flex-col min-h-screen">
-      {/* Hero Section with Carousel */}
-      <section className="relative">
-        <div className="carousel-wrapper">
-          <div className="embla" ref={emblaRef}>
-            <div className="embla__container">
-              {carouselImages.map((image, index) => (
-                <div className="embla__slide" key={index}>
-                  <div className="relative h-[60vh] md:h-[70vh] w-full overflow-hidden">
-                    <img 
-                      src={image.src} 
-                      alt={image.alt}
-                      className="w-full h-full object-cover transform transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-                      <div className="text-center text-white px-4">
-                        <motion.h1 
-                          className="text-4xl md:text-6xl font-bold mb-4"
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ duration: 0.5 }}
-                        >
-                          Snehankur Adoption Center
-                        </motion.h1>
-                        <motion.p 
-                          className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto"
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ duration: 0.5, delay: 0.2 }}
-                        >
-                          Giving every child a loving home and a chance for a brighter future
-                        </motion.p>
-                        <motion.div
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ duration: 0.5, delay: 0.4 }}
-                        >
-                          <Link to="/adoption">
-                            <Button size="lg" className="mr-4 bg-primary hover:bg-primary/90">
-                              Learn About Adoption
-                            </Button>
-                          </Link>
-                          <Link to="/donate">
-                            <Button size="lg" variant="outline" className="bg-white/10 hover:bg-white/20 border-white">
-                              Support Our Cause
-                            </Button>
-                          </Link>
-                        </motion.div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-          
-          {/* Carousel Controls */}
-          <button 
-            className="embla__prev absolute left-5 top-1/2 transform -translate-y-1/2 z-10 bg-white/90 rounded-full p-3 hover:bg-white transition-all shadow-lg"
-            onClick={() => emblaApi?.scrollPrev()}
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M15 18l-6-6 6-6" />
-            </svg>
-          </button>
-          
-          <button 
-            className="embla__next absolute right-5 top-1/2 transform -translate-y-1/2 z-10 bg-white/90 rounded-full p-3 hover:bg-white transition-all shadow-lg"
-            onClick={() => emblaApi?.scrollNext()}
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M9 18l6-6-6-6" />
-            </svg>
-          </button>
-          
-          {/* Carousel Indicators */}
-          <div className="embla__dots absolute bottom-8 left-0 right-0 flex justify-center space-x-2 z-10">
-            {carouselImages.map((_, index) => (
-              <button
-                key={index}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  selectedIndex === index 
-                    ? 'bg-white scale-125' 
-                    : 'bg-white/50 hover:bg-white/70'
-                }`}
-                onClick={() => scrollTo(index)}
-                aria-label={`Go to slide ${index + 1}`}
-              />
-            ))}
+      {/* Hero Section */}
+      <section className="relative h-[60vh] md:h-[70vh] bg-gradient-to-r from-primary/90 to-primary">
+        <div className="absolute inset-0 overflow-hidden">
+          <img 
+            src="https://images.unsplash.com/photo-1588666309990-d68f08e3d4a6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=600&q=80" 
+            alt="Children playing together"
+            className="w-full h-full object-cover opacity-30"
+          />
+        </div>
+        <div className="relative h-full flex items-center justify-center">
+          <div className="text-center text-white px-4">
+            <motion.h1 
+              className="text-4xl md:text-6xl font-bold mb-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              Snehankur Adoption Center
+            </motion.h1>
+            <motion.p 
+              className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              Giving every child a loving home and a chance for a brighter future
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+            >
+              <Link to="/adoption">
+                <Button size="lg" className="mr-4 bg-primary hover:bg-primary/90">
+                  Learn About Adoption
+                </Button>
+              </Link>
+              <Link to="/donate">
+                <Button size="lg" variant="outline" className="bg-white/10 hover:bg-white/20 border-white">
+                  Support Our Cause
+                </Button>
+              </Link>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -175,6 +82,30 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Services Section */}
+      <section className="py-16 px-4">
+        <div className="container mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Our Services</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-card rounded-lg shadow-lg p-6 transition-transform hover:scale-105">
+              <h3 className="text-xl font-semibold mb-4">Adoption Services</h3>
+              <p className="mb-4">We facilitate legal and ethical adoptions, ensuring every child finds a loving home.</p>
+              <Link to="/adoption" className="text-primary hover:underline">Learn more →</Link>
+            </div>
+            <div className="bg-card rounded-lg shadow-lg p-6 transition-transform hover:scale-105">
+              <h3 className="text-xl font-semibold mb-4">Counseling</h3>
+              <p className="mb-4">Professional counseling services for children, adoptive parents, and biological parents.</p>
+              <Link to="/services" className="text-primary hover:underline">Learn more →</Link>
+            </div>
+            <div className="bg-card rounded-lg shadow-lg p-6 transition-transform hover:scale-105">
+              <h3 className="text-xl font-semibold mb-4">Education Support</h3>
+              <p className="mb-4">Educational resources and support for adopted children and their families.</p>
+              <Link to="/services" className="text-primary hover:underline">Learn more →</Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Stats Section */}
       <section className="py-16 px-4 bg-gray-100">
         <div className="container mx-auto">
@@ -195,6 +126,44 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Call to Action */}
+      <section className="bg-muted py-16 px-4">
+        <div className="container mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">Make a Difference Today</h2>
+          <p className="text-xl mb-8 max-w-2xl mx-auto">Your support can transform a child's life. Volunteer, donate, or learn about adoption.</p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Link to="/volunteer">
+              <Button size="lg" variant="outline" className="bg-background">
+                Volunteer With Us
+              </Button>
+            </Link>
+            <Link to="/donate">
+              <Button size="lg">
+                Donate Now
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="py-16 px-4">
+        <div className="container mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">What Families Say</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <blockquote className="bg-card p-6 rounded-lg shadow">
+              <p className="italic mb-4">"Snehankur changed our lives forever. The team supported us throughout the adoption process, and today our family is complete."</p>
+              <footer className="font-semibold">— The Sharma Family</footer>
+            </blockquote>
+            <blockquote className="bg-card p-6 rounded-lg shadow">
+              <p className="italic mb-4">"We're grateful for the counseling and support Snehankur provided. They truly care about the well-being of children and families."</p>
+              <footer className="font-semibold">— The Patel Family</footer>
+            </blockquote>
+          </div>
+        </div>
+      </section>
+
 
       {/* CTA Section */}
       <section className="py-16 px-4 bg-primary text-white">
