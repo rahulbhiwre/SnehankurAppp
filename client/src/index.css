@@ -1,66 +1,3 @@
-
-/* Carousel animations and styling */
-@keyframes fade-in {
-  0% { opacity: 0; transform: scale(1.08); }
-  100% { opacity: 1; transform: scale(1); }
-}
-
-@keyframes slide-in {
-  0% { transform: translateX(10%); opacity: 0; }
-  100% { transform: translateX(0); opacity: 1; }
-}
-
-.carousel-fade {
-  animation: fade-in 0.8s ease-out;
-  will-change: transform, opacity;
-}
-
-.carousel-container {
-  position: relative;
-  overflow: hidden;
-}
-
-.carousel-content {
-  transition: transform 0.5s ease-out;
-}
-
-.carousel-item {
-  transition: opacity 0.5s ease-out;
-}
-
-/* Indicators and navigation styling */
-.carousel-indicators {
-  position: absolute;
-  bottom: 20px;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  z-index: 20;
-}
-
-.carousel-indicator {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.5);
-  transition: background-color 0.3s, transform 0.2s;
-}
-
-.carousel-indicator.active {
-  background-color: white;
-  transform: scale(1.2);
-}
-
-/* Make carousel navigation visible and attractive on all devices */
-@media (max-width: 640px) {
-  .embla__button {
-    transform: scale(0.8);
-    opacity: 0.9;
-  }
-}
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -75,34 +12,63 @@
   }
 }
 
-/* Carousel styling */
-.carousel-container {
+/* Embla Carousel Styles */
+.carousel-wrapper {
   position: relative;
   width: 100%;
 }
 
-.carousel-item {
-  min-width: 0;
-  flex: 0 0 100%;
+.embla {
+  overflow: hidden;
+  width: 100%;
 }
 
-.carousel-content {
+.embla__container {
   display: flex;
+  width: 100%;
 }
 
-.carousel-fade {
-  transition: opacity 0.5s ease;
+.embla__slide {
+  flex: 0 0 100%;
+  min-width: 0;
+  position: relative;
 }
 
-.carousel-indicator {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.5);
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+.embla__prev,
+.embla__next {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-.carousel-indicator.active {
-  background-color: white;
+.embla__prev:hover,
+.embla__next:hover {
+  transform: scale(1.1);
+}
+
+.embla__dots {
+  gap: 8px;
+}
+
+/* Animations */
+@keyframes fade-in {
+  0% { opacity: 0; transform: scale(1.05); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.embla__slide {
+  animation: fade-in 0.5s ease-out;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .embla__prev,
+  .embla__next {
+    width: 40px;
+    height: 40px;
+  }
 }
