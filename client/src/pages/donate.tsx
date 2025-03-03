@@ -51,8 +51,12 @@ export default function Donate() {
                     <FaCopy className="h-4 w-4" />
                   </Button>
                 </div>
-                <Button variant="outline" className="w-full sm:w-auto" onClick={() => setShowQR(true)}>
-                  <FaQrcode className="mr-2 h-4 w-4" />
+                <Button 
+                  variant="default" 
+                  className="w-full sm:w-auto bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-md transition-all hover:shadow-lg transform hover:-translate-y-0.5" 
+                  onClick={() => setShowQR(true)}
+                >
+                  <FaQrcode className="mr-2 h-5 w-5" />
                   Show QR Code
                 </Button>
               </div>
@@ -65,11 +69,11 @@ export default function Donate() {
               <DialogHeader>
                 <DialogTitle>Scan QR Code</DialogTitle>
               </DialogHeader>
-              <div className="flex items-center justify-center p-6">
+              <div className="flex items-center justify-center p-6 bg-gradient-to-r from-orange-50 to-orange-100 rounded-md">
                 <img
-                  src="/qr-code.png"
+                  src="/qr-code.jpg"
                   alt="UPI QR Code"
-                  className="max-w-full h-auto"
+                  className="max-w-full h-auto rounded-lg shadow-md border-2 border-orange-200"
                 />
               </div>
             </DialogContent>
