@@ -74,3 +74,35 @@
     @apply font-sans antialiased bg-background text-foreground;
   }
 }
+
+/* Carousel styling */
+.carousel-container {
+  position: relative;
+  width: 100%;
+}
+
+.carousel-item {
+  min-width: 0;
+  flex: 0 0 100%;
+}
+
+.carousel-content {
+  display: flex;
+}
+
+.carousel-fade {
+  transition: opacity 0.5s ease;
+}
+
+.carousel-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.carousel-indicator.active {
+  background-color: white;
+}

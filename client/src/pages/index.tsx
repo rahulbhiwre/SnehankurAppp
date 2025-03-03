@@ -1,8 +1,8 @@
-
 import { Button } from "@/components/ui/button";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useState } from 'react';
 
 export default function Home() {
   // Sample images for the carousel - replace with your actual images
@@ -24,6 +24,12 @@ export default function Home() {
       alt: "Volunteer activities" 
     }
   ];
+
+  const [current, setCurrent] = useState(0);
+
+  const scrollToSlide = (index) => {
+    setCurrent(index);
+  };
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -87,8 +93,12 @@ export default function Home() {
             {carouselImages.map((_, index) => (
               <button
                 key={index}
-                className="w-3 h-3 rounded-full bg-white/50 hover:bg-white/90 transition-all duration-300"
+                onClick={() => scrollToSlide(index)}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  current === index ? 'bg-white' : 'bg-white/50 hover:bg-white/90'
+                }`}
                 aria-label={`Go to slide ${index + 1}`}
+                aria-current={current === index ? 'true' : 'false'}
               />
             ))}
           </div>
