@@ -17,6 +17,8 @@ export default defineConfig({
   server: {
     port: 5000,
     open: true,
+    host: "0.0.0.0",
+    allowedHosts: "all",
   },
   base: "/", // Use "/" for Cloudflare Pages
 });
