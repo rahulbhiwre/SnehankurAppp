@@ -1,3 +1,21 @@
+
+/* Add this to the top of your existing CSS file */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.carousel-fade {
+  animation: fade-in 0.5s ease-in-out;
+}
+
+/* Make sure the carousel navigation is visible on mobile */
+@media (max-width: 640px) {
+  .embla__button {
+    transform: scale(0.8);
+  }
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

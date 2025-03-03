@@ -1,0 +1,181 @@
+
+import { Button } from "@/components/ui/button";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+
+export default function Home() {
+  // Sample images for the carousel - replace with your actual images
+  const carouselImages = [
+    { 
+      src: "https://images.unsplash.com/photo-1588666309990-d68f08e3d4a6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=600&q=80", 
+      alt: "Children playing together" 
+    },
+    { 
+      src: "https://images.unsplash.com/photo-1511949860663-92c5c57d48a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=600&q=80", 
+      alt: "Education for children" 
+    },
+    { 
+      src: "https://images.unsplash.com/photo-1540479859555-17af45c78602?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=600&q=80", 
+      alt: "Community support" 
+    },
+    { 
+      src: "https://images.unsplash.com/photo-1560252829-804f1aedf1be?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=600&q=80", 
+      alt: "Volunteer activities" 
+    }
+  ];
+
+  return (
+    <div className="flex flex-col min-h-screen">
+      {/* Hero Section with Carousel */}
+      <section className="relative">
+        <Carousel className="w-full" opts={{ loop: true, duration: 30 }}>
+          <CarouselContent>
+            {carouselImages.map((image, index) => (
+              <CarouselItem key={index}>
+                <div className="relative h-[60vh] md:h-[70vh] w-full">
+                  <img 
+                    src={image.src} 
+                    alt={image.alt}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                    <div className="text-center text-white px-4">
+                      <motion.h1 
+                        className="text-4xl md:text-6xl font-bold mb-4"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5 }}
+                      >
+                        Snehankur Adoption Center
+                      </motion.h1>
+                      <motion.p 
+                        className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: 0.2 }}
+                      >
+                        Bringing families together through love and care
+                      </motion.p>
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: 0.4 }}
+                      >
+                        <Link to="/contact">
+                          <Button size="lg" className="mr-4 bg-primary hover:bg-primary/90 text-white">
+                            Contact Us
+                          </Button>
+                        </Link>
+                        <Link to="/about">
+                          <Button size="lg" variant="outline" className="bg-transparent border-white text-white hover:bg-white hover:text-black">
+                            Learn More
+                          </Button>
+                        </Link>
+                      </motion.div>
+                    </div>
+                  </div>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <div className="absolute z-10 inset-0 flex items-center justify-between p-4">
+            <CarouselPrevious className="relative left-0 h-10 w-10 rounded-full bg-white/70 hover:bg-white" />
+            <CarouselNext className="relative right-0 h-10 w-10 rounded-full bg-white/70 hover:bg-white" />
+          </div>
+        </Carousel>
+      </section>
+
+      {/* About Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col md:flex-row items-center">
+            <div className="md:w-1/2 mb-8 md:mb-0">
+              <motion.img 
+                src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" 
+                alt="About Snehankur" 
+                className="rounded-lg shadow-md w-full"
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5 }}
+                viewport={{ once: true }}
+              />
+            </div>
+            <div className="md:w-1/2 md:pl-12">
+              <motion.h2 
+                className="text-3xl font-bold mb-6 text-gray-800"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                viewport={{ once: true }}
+              >
+                About Snehankur
+              </motion.h2>
+              <motion.p 
+                className="text-lg text-gray-600 mb-6"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                viewport={{ once: true }}
+              >
+                Snehankur Adoption Center is a leading adoption institution committed to finding loving homes for children in need. We believe every child deserves a family that provides love, care, and support.
+              </motion.p>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                viewport={{ once: true }}
+              >
+                <Link to="/about">
+                  <Button>Learn More About Us</Button>
+                </Link>
+              </motion.div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Call to Action */}
+      <section className="py-16 bg-primary text-white">
+        <div className="container mx-auto px-4 text-center">
+          <motion.h2 
+            className="text-3xl font-bold mb-6"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+          >
+            Ready to Make a Difference?
+          </motion.h2>
+          <motion.p 
+            className="text-xl mb-8 max-w-2xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            viewport={{ once: true }}
+          >
+            Join us in our mission to provide every child with a loving family. There are many ways you can help.
+          </motion.p>
+          <motion.div
+            className="flex flex-wrap justify-center gap-4"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <Link to="/contact">
+              <Button size="lg" variant="outline" className="border-white bg-transparent hover:bg-white hover:text-primary">
+                Contact Us
+              </Button>
+            </Link>
+            <Link to="/donate">
+              <Button size="lg" className="bg-white text-primary hover:bg-gray-100">
+                Donate Now
+              </Button>
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+    </div>
+  );
+}
