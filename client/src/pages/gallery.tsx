@@ -1,10 +1,9 @@
-import {
-  Card,
-  CardContent,
-} from "@/components/ui/card";
+
+import React, { useState } from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
-import { useState } from "react";
 
 const images = [
   {
@@ -49,9 +48,55 @@ const images = [
   }
 ];
 
+const videos = [
+  {
+    id: "9ZfoZENyt4w",
+    title: "Children's Day Celebration",
+    description: "Special moments from our annual celebration"
+  },
+  {
+    id: "2g811Eo7K8U",
+    title: "Learning Through Play",
+    description: "Educational activities for children" 
+  },
+  {
+    id: "TdD8QgGgzgA",
+    title: "Art & Craft Workshop",
+    description: "Creative expression through various art forms"
+  }
+];
+
+const mediaContent = [
+  {
+    type: "image",
+    src: "https://images.unsplash.com/photo-1526634332515-d56c5fd16991",
+    alt: "Community event",
+    category: "Events"
+  },
+  {
+    type: "video",
+    id: "gcgADLf82Y8",
+    title: "Volunteer Experiences",
+    description: "Stories from our volunteers"
+  },
+  {
+    type: "image",
+    src: "https://images.unsplash.com/photo-1511949860663-92c5c57d48a7",
+    alt: "Children's artwork",
+    category: "Activities"
+  },
+  {
+    type: "video",
+    id: "2zLb5ZFhX0s",
+    title: "Annual Day Celebration",
+    description: "Highlights from our annual day"
+  }
+];
+
 export default function Gallery() {
   const [isOpen, setIsOpen] = useState(false);
   const [photoIndex, setPhotoIndex] = useState(0);
+  const [activeTab, setActiveTab] = useState("photos");
 
   const openLightbox = (index: number) => {
     setPhotoIndex(index);
@@ -68,32 +113,133 @@ export default function Gallery() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {images.map((image, index) => (
-            <Card 
-              key={index} 
-              className="overflow-hidden cursor-pointer transform hover:scale-[1.02] transition-transform duration-200"
-              onClick={() => openLightbox(index)}
-            >
-              <CardContent className="p-0">
-                <div className="relative">
-                  <img
-                    src={image.src}
-                    alt={image.alt}
-                    className="w-full aspect-video object-cover"
-                  />
-                  <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-4">
-                    <p className="text-sm font-medium">{image.category}</p>
-                    <p className="text-xs opacity-75">{image.alt}</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+        <Tabs defaultValue="photos" className="w-full mb-8" onValueChange={setActiveTab}>
+          <div className="flex justify-center mb-8">
+            <TabsList className="bg-orange-50 border border-orange-200">
+              <TabsTrigger 
+                value="photos" 
+                className="data-[state=active]:bg-orange-500 data-[state=active]:text-white"
+              >
+                Photos
+              </TabsTrigger>
+              <TabsTrigger 
+                value="videos" 
+                className="data-[state=active]:bg-orange-500 data-[state=active]:text-white"
+              >
+                Videos
+              </TabsTrigger>
+              <TabsTrigger 
+                value="media" 
+                className="data-[state=active]:bg-orange-500 data-[state=active]:text-white"
+              >
+                Mixed Media
+              </TabsTrigger>
+            </TabsList>
+          </div>
+
+          <TabsContent value="photos" className="mt-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {images.map((image, index) => (
+                <Card 
+                  key={index} 
+                  className="overflow-hidden cursor-pointer transform hover:scale-[1.02] transition-transform duration-200 border-orange-100 hover:border-orange-300"
+                  onClick={() => openLightbox(index)}
+                >
+                  <CardContent className="p-0">
+                    <div className="relative">
+                      <img
+                        src={image.src}
+                        alt={image.alt}
+                        className="w-full aspect-video object-cover"
+                      />
+                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent text-white p-4">
+                        <p className="text-sm font-medium">{image.category}</p>
+                        <p className="text-xs opacity-75">{image.alt}</p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </TabsContent>
+
+          <TabsContent value="videos" className="mt-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+              {videos.map((video, index) => (
+                <Card 
+                  key={index} 
+                  className="overflow-hidden border-orange-100"
+                >
+                  <CardContent className="p-4">
+                    <div className="aspect-video mb-4 rounded-md overflow-hidden shadow-md">
+                      <iframe
+                        width="100%"
+                        height="100%"
+                        src={`https://www.youtube.com/embed/${video.id}`}
+                        title={video.title}
+                        allowFullScreen
+                        className="border-0"
+                      ></iframe>
+                    </div>
+                    <h3 className="text-lg font-semibold text-gray-900">{video.title}</h3>
+                    <p className="text-sm text-gray-600">{video.description}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </TabsContent>
+
+          <TabsContent value="media" className="mt-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {mediaContent.map((item, index) => (
+                <Card 
+                  key={index} 
+                  className="overflow-hidden border-orange-100 hover:border-orange-300 transition-colors"
+                >
+                  <CardContent className="p-0">
+                    {item.type === "image" ? (
+                      <div 
+                        className="relative cursor-pointer" 
+                        onClick={() => {
+                          const imageIndex = images.findIndex(img => img.src === item.src);
+                          if (imageIndex >= 0) openLightbox(imageIndex);
+                        }}
+                      >
+                        <img
+                          src={item.src}
+                          alt={item.alt}
+                          className="w-full aspect-video object-cover"
+                        />
+                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent text-white p-4">
+                          <p className="text-sm font-medium">{item.category}</p>
+                          <p className="text-xs opacity-75">{item.alt}</p>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="p-4">
+                        <div className="aspect-video mb-4 rounded-md overflow-hidden shadow-md">
+                          <iframe
+                            width="100%"
+                            height="100%"
+                            src={`https://www.youtube.com/embed/${item.id}`}
+                            title={item.title}
+                            allowFullScreen
+                            className="border-0"
+                          ></iframe>
+                        </div>
+                        <h3 className="text-lg font-semibold text-gray-900">{item.title}</h3>
+                        <p className="text-sm text-gray-600">{item.description}</p>
+                      </div>
+                    )}
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </TabsContent>
+        </Tabs>
 
         <Lightbox
-          open={isOpen}
+          open={isOpen && activeTab === "photos"}
           close={() => setIsOpen(false)}
           index={photoIndex}
           slides={images}
