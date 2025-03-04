@@ -32,3 +32,19 @@
   transform: translateY(-5px);
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
 }
+
+/* Enhanced tab styling */
+[data-state=active] {
+  position: relative;
+}
+
+[data-state=active]::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: #f97316;
+  border-radius: 1px;
+}

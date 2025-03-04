@@ -90,6 +90,18 @@ const mediaContent = [
     id: "2zLb5ZFhX0s",
     title: "Annual Day Celebration",
     description: "Highlights from our annual day"
+  },
+  {
+    type: "image",
+    src: "https://images.unsplash.com/photo-1516627145497-ae6968895b40",
+    alt: "Children playing outdoors",
+    category: "Outdoor Activities"
+  },
+  {
+    type: "video",
+    id: "J1nk2qMS0-E",
+    title: "Our Mission",
+    description: "Learn about our work and mission"
   }
 ];
 
@@ -115,24 +127,24 @@ export default function Gallery() {
 
         <Tabs defaultValue="photos" className="w-full mb-8" onValueChange={setActiveTab}>
           <div className="flex justify-center mb-8">
-            <TabsList className="bg-orange-50 border border-orange-200">
+            <TabsList className="bg-gradient-to-r from-orange-50 to-orange-100 border border-orange-200 p-1 rounded-xl shadow-sm">
               <TabsTrigger 
                 value="photos" 
-                className="data-[state=active]:bg-orange-500 data-[state=active]:text-white"
+                className="px-6 py-2 rounded-lg text-sm font-medium transition-all data-[state=active]:bg-orange-500 data-[state=active]:text-white data-[state=active]:shadow-md"
               >
                 Photos
               </TabsTrigger>
               <TabsTrigger 
                 value="videos" 
-                className="data-[state=active]:bg-orange-500 data-[state=active]:text-white"
+                className="px-6 py-2 rounded-lg text-sm font-medium transition-all data-[state=active]:bg-orange-500 data-[state=active]:text-white data-[state=active]:shadow-md"
               >
                 Videos
               </TabsTrigger>
               <TabsTrigger 
                 value="media" 
-                className="data-[state=active]:bg-orange-500 data-[state=active]:text-white"
+                className="px-6 py-2 rounded-lg text-sm font-medium transition-all data-[state=active]:bg-orange-500 data-[state=active]:text-white data-[state=active]:shadow-md"
               >
-                Mixed Media
+                Media
               </TabsTrigger>
             </TabsList>
           </div>
@@ -218,6 +230,15 @@ export default function Gallery() {
                     ) : (
                       <div className="p-4">
                         <div className="aspect-video mb-4 rounded-md overflow-hidden shadow-md">
+                          <iframe
+                            width="100%"
+                            height="100%"
+                            src={`https://www.youtube.com/embed/${item.id}`}
+                            title={item.title}
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                            className="border-0"
+                          ></iframe>
                           <iframe
                             width="100%"
                             height="100%"
