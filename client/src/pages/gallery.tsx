@@ -1,130 +1,128 @@
 
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent } from "@/components/ui/card";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 
+// Original images collection
 const images = [
   {
-    src: "https://images.unsplash.com/photo-1489710437720-ebb67ec84dd2",
-    alt: "Happy children with caregivers",
-    category: "Daily Life"
-  },
-  {
-    src: "https://images.unsplash.com/photo-1472586662442-3eec04b9dbda",
-    alt: "Children playing",
-    category: "Activities"
-  },
-  {
-    src: "https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a",
-    alt: "Group activity",
-    category: "Activities"
-  },
-  {
-    src: "https://images.unsplash.com/photo-1484863137850-59afcfe05386",
-    alt: "Learning together",
-    category: "Education"
-  },
-  {
-    src: "https://images.unsplash.com/photo-1526529613260-5f7cad1eb4b4",
-    alt: "Our facility",
-    category: "Facility"
-  },
-  {
-    src: "https://images.unsplash.com/photo-1606092195730-5d7b9af1efc5",
-    alt: "Art activities",
-    category: "Activities"
-  },
-  {
-    src: "https://images.unsplash.com/photo-1541692641319-981cc79ee10a",
-    alt: "Outdoor play",
-    category: "Activities"
-  },
-  {
-    src: "https://images.unsplash.com/photo-1502086223501-7ea6ecd79368",
-    alt: "Celebration time",
-    category: "Events"
-  }
-];
-
-const videos = [
-  {
-    id: "9ZfoZENyt4w",
-    title: "Children's Day Celebration",
-    description: "Special moments from our annual celebration"
-  },
-  {
-    id: "2g811Eo7K8U",
-    title: "Learning Through Play",
-    description: "Educational activities for children" 
-  },
-  {
-    id: "TdD8QgGgzgA",
-    title: "Art & Craft Workshop",
-    description: "Creative expression through various art forms"
-  }
-];
-
-const mediaContent = [
-  {
-    type: "image",
     src: "https://images.unsplash.com/photo-1526634332515-d56c5fd16991",
     alt: "Community event",
     category: "Events"
   },
   {
-    type: "video",
-    id: "gcgADLf82Y8",
-    title: "Volunteer Experiences",
-    description: "Stories from our volunteers"
-  },
-  {
-    type: "image",
     src: "https://images.unsplash.com/photo-1511949860663-92c5c57d48a7",
     alt: "Children's artwork",
     category: "Activities"
   },
   {
-    type: "video",
+    src: "https://images.unsplash.com/photo-1516627145497-ae6968895b40",
+    alt: "Children playing outdoors",
+    category: "Outdoor Activities"
+  }
+];
+
+// GitHub photos URLs (we'll fetch the actual files from the API)
+const githubPhotos = [
+  {
+    src: "", // Will be populated from GitHub API
+    alt: "Snehankur Activity",
+    category: "Activities"
+  }
+];
+
+// Videos
+const videos = [
+  {
+    id: "gcgADLf82Y8",
+    title: "Volunteer Experiences",
+    description: "Stories from our volunteers"
+  },
+  {
     id: "2zLb5ZFhX0s",
     title: "Annual Day Celebration",
     description: "Highlights from our annual day"
   },
   {
-    type: "image",
-    src: "https://images.unsplash.com/photo-1516627145497-ae6968895b40",
-    alt: "Children playing outdoors",
-    category: "Outdoor Activities"
-  },
-  {
-    type: "video",
     id: "J1nk2qMS0-E",
     title: "Our Mission",
     description: "Learn about our work and mission"
   }
 ];
 
+// Media content for the media tab (photos only)
+const mediaContent = [];
+
 export default function Gallery() {
   const [isOpen, setIsOpen] = useState(false);
   const [photoIndex, setPhotoIndex] = useState(0);
   const [activeTab, setActiveTab] = useState("photos");
+  const [allPhotos, setAllPhotos] = useState([...images]);
+  const [selectedVideoUrl, setSelectedVideoUrl] = useState("");
+  const [videoDialogOpen, setVideoDialogOpen] = useState(false);
 
-  const openLightbox = (index: number) => {
+  // Fetch GitHub photos
+  useEffect(() => {
+    const fetchGitHubPhotos = async () => {
+      try {
+        // Fetch repository content - specifically the news folder
+        const repoResponse = await fetch("https://api.github.com/repos/rahulbhiwre/snehankur_photos/contents/news");
+        
+        if (!repoResponse.ok) {
+          throw new Error("Failed to fetch GitHub repository");
+        }
+        
+        const folderContents = await repoResponse.json();
+        
+        // Filter for jpg files
+        const photoFiles = folderContents.filter(file => 
+          file.name.toLowerCase().endsWith('.jpg') || 
+          file.name.toLowerCase().endsWith('.jpeg') || 
+          file.name.toLowerCase().endsWith('.png')
+        );
+        
+        // Create image objects for each photo
+        const newPhotos = photoFiles.map((file, index) => ({
+          src: file.download_url,
+          alt: `Snehankur Photo ${index + 1}`,
+          category: "Activities"
+        }));
+        
+        // Update all photos to include GitHub photos
+        setAllPhotos([...images, ...newPhotos]);
+      } catch (error) {
+        console.error("Error fetching GitHub photos:", error);
+      }
+    };
+
+    fetchGitHubPhotos();
+  }, []);
+
+  const openLightbox = (index) => {
     setPhotoIndex(index);
     setIsOpen(true);
   };
 
-  return (
-    <div className="py-16 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Our Gallery</h1>
-          <p className="text-lg text-gray-600">
-            Moments of joy, learning, and growth at Snehankur
-          </p>
-        </div>
+  const openVideoDialog = (videoId) => {
+    setSelectedVideoUrl(`https://www.youtube.com/embed/${videoId}?autoplay=1`);
+    setVideoDialogOpen(true);
+  };
 
+  return (
+    <div className="container mx-auto py-16 px-4">
+      <div className="text-center mb-12">
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-500 to-amber-600 bg-clip-text text-transparent">
+          Our Gallery
+        </h1>
+        <p className="text-lg max-w-xl mx-auto text-gray-600">
+          Browse through photos and videos capturing moments from our journey and activities.
+        </p>
+      </div>
+
+      <div className="max-w-7xl mx-auto">
         <Tabs defaultValue="photos" className="w-full mb-8" onValueChange={setActiveTab}>
           <div className="flex justify-center mb-8">
             <TabsList className="bg-gradient-to-r from-orange-50 to-orange-100 border border-orange-200 p-1 rounded-xl shadow-sm">
@@ -151,7 +149,7 @@ export default function Gallery() {
 
           <TabsContent value="photos" className="mt-4">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {images.map((image, index) => (
+              {allPhotos.map((image, index) => (
                 <Card 
                   key={index} 
                   className="overflow-hidden cursor-pointer transform hover:scale-[1.02] transition-transform duration-200 border-orange-100 hover:border-orange-300"
@@ -176,25 +174,33 @@ export default function Gallery() {
           </TabsContent>
 
           <TabsContent value="videos" className="mt-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {videos.map((video, index) => (
                 <Card 
                   key={index} 
-                  className="overflow-hidden border-orange-100"
+                  className="overflow-hidden cursor-pointer gallery-video-card border-orange-100"
+                  onClick={() => openVideoDialog(video.id)}
                 >
-                  <CardContent className="p-4">
-                    <div className="aspect-video mb-4 rounded-md overflow-hidden shadow-md">
-                      <iframe
-                        width="100%"
-                        height="100%"
-                        src={`https://www.youtube.com/embed/${video.id}`}
-                        title={video.title}
-                        allowFullScreen
-                        className="border-0"
-                      ></iframe>
+                  <CardContent className="p-0">
+                    <div className="aspect-video relative">
+                      <img 
+                        src={`https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`} 
+                        alt={video.title}
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center shadow-lg">
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                        </div>
+                      </div>
+                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent text-white p-4">
+                        <h3 className="font-bold text-lg">{video.title}</h3>
+                        <p className="text-sm opacity-90">{video.description}</p>
+                      </div>
                     </div>
-                    <h3 className="text-lg font-semibold text-gray-900">{video.title}</h3>
-                    <p className="text-sm text-gray-600">{video.description}</p>
                   </CardContent>
                 </Card>
               ))}
@@ -202,56 +208,27 @@ export default function Gallery() {
           </TabsContent>
 
           <TabsContent value="media" className="mt-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {mediaContent.map((item, index) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {allPhotos.map((item, index) => (
                 <Card 
                   key={index} 
                   className="overflow-hidden border-orange-100 hover:border-orange-300 transition-colors"
                 >
                   <CardContent className="p-0">
-                    {item.type === "image" ? (
-                      <div 
-                        className="relative cursor-pointer" 
-                        onClick={() => {
-                          const imageIndex = images.findIndex(img => img.src === item.src);
-                          if (imageIndex >= 0) openLightbox(imageIndex);
-                        }}
-                      >
-                        <img
-                          src={item.src}
-                          alt={item.alt}
-                          className="w-full aspect-video object-cover"
-                        />
-                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent text-white p-4">
-                          <p className="text-sm font-medium">{item.category}</p>
-                          <p className="text-xs opacity-75">{item.alt}</p>
-                        </div>
+                    <div 
+                      className="relative cursor-pointer" 
+                      onClick={() => openLightbox(index)}
+                    >
+                      <img
+                        src={item.src}
+                        alt={item.alt}
+                        className="w-full aspect-video object-cover"
+                      />
+                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent text-white p-4">
+                        <p className="text-sm font-medium">{item.category}</p>
+                        <p className="text-xs opacity-75">{item.alt}</p>
                       </div>
-                    ) : (
-                      <div className="p-4">
-                        <div className="aspect-video mb-4 rounded-md overflow-hidden shadow-md">
-                          <iframe
-                            width="100%"
-                            height="100%"
-                            src={`https://www.youtube.com/embed/${item.id}`}
-                            title={item.title}
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowFullScreen
-                            className="border-0"
-                          ></iframe>
-                          <iframe
-                            width="100%"
-                            height="100%"
-                            src={`https://www.youtube.com/embed/${item.id}`}
-                            title={item.title}
-                            allowFullScreen
-                            className="border-0"
-                          ></iframe>
-                        </div>
-                        <h3 className="text-lg font-semibold text-gray-900">{item.title}</h3>
-                        <p className="text-sm text-gray-600">{item.description}</p>
-                      </div>
-                    )}
+                    </div>
                   </CardContent>
                 </Card>
               ))}
@@ -260,10 +237,10 @@ export default function Gallery() {
         </Tabs>
 
         <Lightbox
-          open={isOpen && activeTab === "photos"}
+          open={isOpen}
           close={() => setIsOpen(false)}
           index={photoIndex}
-          slides={images}
+          slides={allPhotos.map(img => ({ src: img.src, alt: img.alt }))}
           render={{
             slide: ({ slide }) => (
               <img 
@@ -275,6 +252,21 @@ export default function Gallery() {
           }}
         />
       </div>
+
+      <Dialog open={videoDialogOpen} onOpenChange={setVideoDialogOpen}>
+        <DialogContent className="sm:max-w-3xl">
+          <div className="aspect-video">
+            <iframe
+              src={selectedVideoUrl}
+              className="w-full h-full"
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
