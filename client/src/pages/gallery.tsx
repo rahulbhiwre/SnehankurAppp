@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent } from "@/components/ui/card";
@@ -11,18 +10,18 @@ const images = [
   {
     src: "https://images.unsplash.com/photo-1526634332515-d56c5fd16991",
     alt: "Community event",
-    category: "Events"
+    category: "Events",
   },
   {
     src: "https://images.unsplash.com/photo-1511949860663-92c5c57d48a7",
     alt: "Children's artwork",
-    category: "Activities"
+    category: "Activities",
   },
   {
     src: "https://images.unsplash.com/photo-1516627145497-ae6968895b40",
     alt: "Children playing outdoors",
-    category: "Outdoor Activities"
-  }
+    category: "Outdoor Activities",
+  },
 ];
 
 // GitHub photos URLs (we'll fetch the actual files from the API)
@@ -30,27 +29,27 @@ const githubPhotos = [
   {
     src: "", // Will be populated from GitHub API
     alt: "Snehankur Activity",
-    category: "Activities"
-  }
+    category: "Activities",
+  },
 ];
 
 // Videos
 const videos = [
   {
-    id: "gcgADLf82Y8",
+    id: "uW-7P_i3yQ4",
     title: "Volunteer Experiences",
-    description: "Stories from our volunteers"
+    description: "Stories from our volunteers",
   },
   {
-    id: "2zLb5ZFhX0s",
+    id: "uW-7P_i3yQ4",
     title: "Annual Day Celebration",
-    description: "Highlights from our annual day"
+    description: "Highlights from our annual day",
   },
   {
-    id: "J1nk2qMS0-E",
+    id: "uW-7P_i3yQ4-E",
     title: "Our Mission",
-    description: "Learn about our work and mission"
-  }
+    description: "Learn about our work and mission",
+  },
 ];
 
 // Media content for the media tab (photos only)
@@ -69,28 +68,31 @@ export default function Gallery() {
     const fetchGitHubPhotos = async () => {
       try {
         // Fetch repository content - specifically the news folder
-        const repoResponse = await fetch("https://api.github.com/repos/rahulbhiwre/snehankur_photos/contents/news");
-        
+        const repoResponse = await fetch(
+          "https://api.github.com/repos/rahulbhiwre/snehankur_photos/contents/news",
+        );
+
         if (!repoResponse.ok) {
           throw new Error("Failed to fetch GitHub repository");
         }
-        
+
         const folderContents = await repoResponse.json();
-        
+
         // Filter for jpg files
-        const photoFiles = folderContents.filter(file => 
-          file.name.toLowerCase().endsWith('.jpg') || 
-          file.name.toLowerCase().endsWith('.jpeg') || 
-          file.name.toLowerCase().endsWith('.png')
+        const photoFiles = folderContents.filter(
+          (file) =>
+            file.name.toLowerCase().endsWith(".jpg") ||
+            file.name.toLowerCase().endsWith(".jpeg") ||
+            file.name.toLowerCase().endsWith(".png"),
         );
-        
+
         // Create image objects for each photo
         const newPhotos = photoFiles.map((file, index) => ({
           src: file.download_url,
           alt: `Snehankur Photo ${index + 1}`,
-          category: "Activities"
+          category: "Activities",
         }));
-        
+
         // Update all photos to include GitHub photos
         setAllPhotos([...images, ...newPhotos]);
       } catch (error) {
@@ -118,28 +120,33 @@ export default function Gallery() {
           Our Gallery
         </h1>
         <p className="text-lg max-w-xl mx-auto text-gray-600">
-          Browse through photos and videos capturing moments from our journey and activities.
+          Browse through photos and videos capturing moments from our journey
+          and activities.
         </p>
       </div>
 
       <div className="max-w-7xl mx-auto">
-        <Tabs defaultValue="photos" className="w-full mb-8" onValueChange={setActiveTab}>
+        <Tabs
+          defaultValue="photos"
+          className="w-full mb-8"
+          onValueChange={setActiveTab}
+        >
           <div className="flex justify-center mb-8">
             <TabsList className="bg-gradient-to-r from-orange-50 to-orange-100 border border-orange-200 p-1 rounded-xl shadow-sm">
-              <TabsTrigger 
-                value="photos" 
+              <TabsTrigger
+                value="photos"
                 className="px-6 py-2 rounded-lg text-sm font-medium transition-all data-[state=active]:bg-orange-500 data-[state=active]:text-white data-[state=active]:shadow-md"
               >
                 Photos
               </TabsTrigger>
-              <TabsTrigger 
-                value="videos" 
+              <TabsTrigger
+                value="videos"
                 className="px-6 py-2 rounded-lg text-sm font-medium transition-all data-[state=active]:bg-orange-500 data-[state=active]:text-white data-[state=active]:shadow-md"
               >
                 Videos
               </TabsTrigger>
-              <TabsTrigger 
-                value="media" 
+              <TabsTrigger
+                value="media"
                 className="px-6 py-2 rounded-lg text-sm font-medium transition-all data-[state=active]:bg-orange-500 data-[state=active]:text-white data-[state=active]:shadow-md"
               >
                 Media
@@ -150,8 +157,8 @@ export default function Gallery() {
           <TabsContent value="photos" className="mt-4">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {allPhotos.map((image, index) => (
-                <Card 
-                  key={index} 
+                <Card
+                  key={index}
                   className="overflow-hidden cursor-pointer transform hover:scale-[1.02] transition-transform duration-200 border-orange-100 hover:border-orange-300"
                   onClick={() => openLightbox(index)}
                 >
@@ -176,29 +183,47 @@ export default function Gallery() {
           <TabsContent value="videos" className="mt-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {videos.map((video, index) => (
-                <Card 
-                  key={index} 
+                <Card
+                  key={index}
                   className="overflow-hidden cursor-pointer gallery-video-card border-orange-100"
                   onClick={() => openVideoDialog(video.id)}
                 >
                   <CardContent className="p-0">
                     <div className="aspect-video relative">
-                      <img 
-                        src={`https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`} 
+                      <img
+                        src={`https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`}
                         alt={video.title}
                         className="w-full h-full object-cover"
                       />
                       <div className="absolute inset-0 flex items-center justify-center">
                         <div className="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center shadow-lg">
-                          <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-8 w-8 text-white"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
+                            />
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                            />
                           </svg>
                         </div>
                       </div>
                       <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent text-white p-4">
                         <h3 className="font-bold text-lg">{video.title}</h3>
-                        <p className="text-sm opacity-90">{video.description}</p>
+                        <p className="text-sm opacity-90">
+                          {video.description}
+                        </p>
                       </div>
                     </div>
                   </CardContent>
@@ -210,13 +235,13 @@ export default function Gallery() {
           <TabsContent value="media" className="mt-4">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {allPhotos.map((item, index) => (
-                <Card 
-                  key={index} 
+                <Card
+                  key={index}
                   className="overflow-hidden border-orange-100 hover:border-orange-300 transition-colors"
                 >
                   <CardContent className="p-0">
-                    <div 
-                      className="relative cursor-pointer" 
+                    <div
+                      className="relative cursor-pointer"
                       onClick={() => openLightbox(index)}
                     >
                       <img
@@ -240,15 +265,15 @@ export default function Gallery() {
           open={isOpen}
           close={() => setIsOpen(false)}
           index={photoIndex}
-          slides={allPhotos.map(img => ({ src: img.src, alt: img.alt }))}
+          slides={allPhotos.map((img) => ({ src: img.src, alt: img.alt }))}
           render={{
             slide: ({ slide }) => (
-              <img 
-                src={slide.src} 
-                alt={slide.alt} 
-                style={{ maxHeight: '85vh', margin: 'auto' }}
+              <img
+                src={slide.src}
+                alt={slide.alt}
+                style={{ maxHeight: "85vh", margin: "auto" }}
               />
-            )
+            ),
           }}
         />
       </div>
