@@ -65,7 +65,7 @@ export default function Gallery() {
         const photosFolderResponse = await fetch(
           "https://api.github.com/repos/rahulbhiwre/snehankur_photos/contents/photos",
         );
-        
+
         // Fetch repository content - specifically the news folder for the media tab
         const newsFolderResponse = await fetch(
           "https://api.github.com/repos/rahulbhiwre/snehankur_photos/contents/news",
@@ -110,7 +110,7 @@ export default function Gallery() {
 
         // Update photos for the Photos tab
         setAllPhotos([...images, ...newPhotos]);
-        
+
         // Update media content for the Media tab
         setMediaPhotos([...newMediaPhotos]);
       } catch (error) {
@@ -298,7 +298,7 @@ export default function Gallery() {
             ),
           }}
         />
-        
+
         {/* Lightbox for Media tab */}
         <Lightbox
           open={mediaLightboxOpen}
