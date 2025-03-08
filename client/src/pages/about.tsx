@@ -130,12 +130,70 @@ export default function About() {
             </span>
           </motion.h2>
 
-          {/* The Beginning */}
+          {/* About Us */}
           <motion.div
             className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8 }}
+          >
+            <div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4 text-orange-600">
+                About Us
+              </h3>
+              <p className="text-gray-700 mb-4 leading-relaxed">
+                २०१७ मध्ये स्थापन झालेले स्नेहांकुर हे एक लहान उपक्रम म्हणून सुरू झाले जे करुणा आणि दूरदृष्टीने प्रेरित होते - ज्या मुलांना स्वतःचे म्हणवणारे कोणी नव्हते त्यांना प्रेम, काळजी आणि संधी प्रदान करणे. मर्यादित संसाधनांसह एका नम्र प्रयत्नातून सुरू झालेले हे आज अनाथ आणि वंचित मुलांसाठी एक समृद्ध आधार प्रणालीमध्ये विकसित झाले आहे.
+              </p>
+              <p className="text-gray-700 mb-4 leading-relaxed">
+                स्नेहांकुर येथे, आमचा असा विश्वास आहे की प्रत्येक मुलाला घर, शिक्षण आणि स्वप्न पाहण्याची संधी मिळायला हवी. आमचे ध्येय मूलभूत गरजा पुरवण्यापलीकडे जाते - आम्ही दर्जेदार शिक्षण आणि जीवन कौशल्यांद्वारे समग्र विकास, भावनिक कल्याण आणि भविष्यातील सक्षमीकरणावर लक्ष केंद्रित करतो.
+              </p>
+              <h4 className="text-xl font-semibold text-orange-600 mb-3 mt-5">
+                आमचा उद्देश आणि मूल्ये 🌟
+              </h4>
+              <ul className="list-none pl-0 mb-4 text-gray-700 space-y-2">
+                <li className="flex items-start">
+                  <span className="text-green-600 mr-2">✅</span> 
+                  <span>शिक्षण, आरोग्यसेवा आणि भावनिक आधाराद्वारे मुलांचे संगोपन आणि सक्षमीकरण करणे.</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-green-600 mr-2">✅</span> 
+                  <span>एक प्रेमळ, कुटुंबासारखे वातावरण प्रदान करणे जिथे प्रत्येक मुलाला सुरक्षित आणि मूल्यवान वाटेल.</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-green-600 mr-2">✅</span> 
+                  <span>जीवन उन्नत करणे आणि परिवर्तन करणे, परिस्थितीमुळे कोणतेही मूल मागे राहणार नाही याची खात्री करणे.</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-green-600 mr-2">✅</span> 
+                  <span>देणगीदार, हितचिंतक आणि स्वयंसेवकांचा एक मजबूत समुदाय तयार करणे जे फरक घडवण्यात विश्वास ठेवतात.</span>
+                </li>
+              </ul>
+              <p className="text-gray-700 mb-4 leading-relaxed">
+                दयाळू देणगीदार, समर्पित स्वयंसेवक आणि उत्साही टीमच्या अढळ पाठिंब्यामुळे, स्नेहांकुर वाढतच आहे, दरवर्षी अधिकाधिक जीवनांना स्पर्श करत आहे. आमचा प्रवास आव्हाने, चिकाटी आणि अंतहीन आशेचा राहिला आहे आणि आम्ही मदत केलेल्या प्रत्येक मुलाला, आम्ही एका उज्ज्वल, दयाळू जगाच्या जवळ एक पाऊल टाकतो.
+              </p>
+              <p className="text-gray-700 leading-relaxed">
+                स्नेहांकुर ही केवळ एक संस्था नाही - ती प्रेम, काळजी आणि दुसऱ्या संधीची चळवळ आहे. 💖✨
+              </p>
+            </div>
+            <motion.div
+              className="flex justify-center"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.3 }}
+            >
+              <img
+                src="https://images.unsplash.com/photo-1594708767771-a5e9d3f87a18?q=80&w=2070&auto=format&fit=crop"
+                alt="Children playing together"
+                className="rounded-lg shadow-xl object-cover w-full max-w-md h-64"
+              />
+            </motion.div>
+          </motion.div>
+
+          {/* The Beginning */}
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
           >
             <div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4 text-orange-600">
