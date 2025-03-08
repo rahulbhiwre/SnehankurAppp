@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+const years_of_service = new Date().getFullYear() - 2017;
 
 export default function About() {
   return (
@@ -44,7 +45,7 @@ export default function About() {
               <div className="h-2 bg-orange-500"></div>
               <div className="p-8">
                 <div className="h-20 w-20 rounded-full bg-gradient-to-r from-orange-400 to-orange-500 flex items-center justify-center mx-auto mb-6 shadow-lg">
-                  <span className="text-white text-2xl font-bold">1000+</span>
+                  <span className="text-white text-2xl font-bold">15+</span>
                 </div>
                 <h3 className="text-2xl font-bold text-center mb-4 text-gray-800">
                   Children Supported
@@ -72,14 +73,17 @@ export default function About() {
               <div className="h-2 bg-orange-500"></div>
               <div className="p-8">
                 <div className="h-20 w-20 rounded-full bg-gradient-to-r from-orange-400 to-orange-500 flex items-center justify-center mx-auto mb-6 shadow-lg">
-                  <span className="text-white text-2xl font-bold">15</span>
+                  <span className="text-white text-2xl font-bold">
+                    {years_of_service}+
+                  </span>
                 </div>
                 <h3 className="text-2xl font-bold text-center mb-4 text-gray-800">
                   Years of Service
                 </h3>
                 <p className="text-gray-600 text-center">
-                  Dedicated to serving underprivileged children for over 15
-                  years with unwavering commitment to their wellbeing.
+                  Dedicated to serving underprivileged children for over{" "}
+                  {years_of_service} years. with unwavering commitment to their
+                  wellbeing.
                 </p>
               </div>
             </motion.div>
@@ -99,14 +103,14 @@ export default function About() {
               <div className="h-2 bg-orange-500"></div>
               <div className="p-8">
                 <div className="h-20 w-20 rounded-full bg-gradient-to-r from-orange-400 to-orange-500 flex items-center justify-center mx-auto mb-6 shadow-lg">
-                  <span className="text-white text-2xl font-bold">5</span>
+                  <span className="text-white text-2xl font-bold">5+</span>
                 </div>
                 <h3 className="text-2xl font-bold text-center mb-4 text-gray-800">
-                  National Awards
+                  Awards
                 </h3>
                 <p className="text-gray-600 text-center">
-                  Recognized with 5 prestigious national awards for our
-                  outstanding contribution to child welfare and education.
+                  Recognized with more than 5 prestigious awards for our
+                  outstanding contribution to child welfare andeducation.
                 </p>
               </div>
             </motion.div>
@@ -138,19 +142,41 @@ export default function About() {
                 About Founder
               </h3>
               <p className="text-gray-700 mb-4 leading-relaxed">
-                प्रदीप कटारे हे एक दूरदर्शी समाजसुधारक आहेत ज्यांनी अनाथ आणि वंचित मुलांच्या उन्नतीसाठी आपले जीवन समर्पित केले आहे. एक सुशिक्षित आणि दयाळू व्यक्ती म्हणून, त्यांनी पारंपारिक करिअर मार्गांपासून दूर जाऊन गरजू मुलांना एक प्रेमळ घर आणि उज्ज्वल भविष्य प्रदान करण्याचा एक मोठा उद्देश साध्य करण्याचा निर्णय घेतला.
+                प्रदीप कातारे हे एक दूरदर्शी समाजसुधारक आहेत ज्यांनी अनाथ आणि
+                वंचित मुलांच्या उन्नतीसाठी आपले जीवन समर्पित केले आहे. एक
+                सुशिक्षित आणि दयाळू व्यक्ती म्हणून, त्यांनी पारंपारिक करिअर
+                मार्गांपासून दूर जाऊन गरजू मुलांना एक प्रेमळ घर आणि उज्ज्वल
+                भविष्य प्रदान करण्याचा एक मोठा उद्देश साध्य करण्याचा निर्णय
+                घेतला.
               </p>
               <p className="text-gray-700 mb-4 leading-relaxed">
-                त्यांच्या पत्नी नीता कटारे यांच्यासोबत, ते पूर्णवेळ वचनबद्धतेनुसार अनाथाश्रम चालवतात, जेणेकरून प्रत्येक मुलाला केवळ अन्न आणि निवाराच नाही तर दर्जेदार शिक्षण, भावनिक आधार आणि सन्माननीय जीवन जगण्याची संधी देखील मिळेल याची खात्री करतात. त्यांचा प्रवास प्रत्येक मुलाला प्रेम, काळजी आणि भरभराटीसाठी योग्य वातावरण मिळावे या अढळ विश्वासाने चालवला जातो.
+                त्यांच्या पत्नी नीता कातारे यांच्यासोबत, ते पूर्णवेळ
+                वचनबद्धतेनुसार अनाथाश्रम चालवतात, जेणेकरून प्रत्येक मुलाला केवळ
+                अन्न आणि निवाराच नाही तर दर्जेदार शिक्षण, भावनिक आधार आणि
+                सन्माननीय जीवन जगण्याची संधी देखील मिळेल याची खात्री करतात.
+                त्यांचा प्रवास प्रत्येक मुलाला प्रेम, काळजी आणि भरभराटीसाठी
+                योग्य वातावरण मिळवे या अढळ विश्वासाने चालवला जातो.
               </p>
               <p className="text-gray-700 mb-4 leading-relaxed">
-                प्रदीप आणि नीता यांना वेगळे करणारी गोष्ट म्हणजे त्यांचा प्रत्यक्ष दृष्टिकोन - ते केवळ प्रशासक नाहीत तर सक्रिय काळजीवाहक, मार्गदर्शक आणि मुलांचे पालक आहेत. वाढदिवस साजरा करण्यापासून ते अभ्यास आणि जीवनातील आव्हानांमधून त्यांना मार्गदर्शन करण्यापर्यंत, त्यांनी अनाथाश्रमात एक खरे कुटुंब निर्माण केले आहे.
+                प्रदीप आणि नीता यांना वेगळे करणारी गोष्ट म्हणजे त्यांचा
+                प्रत्यक्ष दृष्टिकोन - ते केवळ प्रशासक नाहीत तर सक्रिय काळजीवाहक,
+                मार्गदर्शक आणि मुलांचे पालक आहेत. वाढदिवस साजरा करण्यापासून ते
+                अभ्यास आणि जीवनातील आव्हानांमधून त्यांना मार्गदर्शन
+                करण्यापर्यंत, त्यांनी अनाथाश्रमात एक खरे कुटुंब निर्माण केले
+                आहे.
               </p>
               <p className="text-gray-700 mb-4 leading-relaxed">
-                त्यांचे काम केवळ या मुलांच्या डोक्यावर छप्पर प्रदान करण्याबद्दल नाही; हे भविष्य घडवण्याबद्दल, स्वप्नांना घडवण्याबद्दल आणि आत्मविश्वास निर्माण करण्याबद्दल आहे. त्यांच्या मार्गदर्शनाखाली, अनाथाश्रम आशेचे एक अभयारण्य बनले आहे, जिथे प्रत्येक मुलाला कष्टाच्या चक्रातून मुक्त होण्यासाठी आणि शक्यतांनी भरलेल्या भविष्याला स्वीकारण्यास सक्षम केले जाते.
+                त्यांचे काम केवळ या मुलांच्या डोक्यावर छप्पर प्रदान करण्याबद्दल
+                नाही; हे भविष्य घडवण्याबद्दल, स्वप्नांना घडवण्याबद्दल आणि
+                आत्मविश्वास निर्माण करण्याबद्दल आहे. त्यांच्या मार्गदर्शनाखाली,
+                अनाथाश्रम आशेचे एक अभयारण्य बनले आहे, जिथे प्रत्येक मुलाला
+                कष्टाच्या चक्रातून मुक्त होण्यासाठी आणि शक्यतांनी भरलेल्या
+                भविष्याला स्वीकारण्यास सक्षम केले जाते.
               </p>
               <p className="text-gray-700 leading-relaxed">
-                त्यांचे निःस्वार्थ समर्पण अनेकांना प्रेरणा देत आहे, हे सिद्ध करून की उत्कटतेने आणि वचनबद्धतेने प्रेरित होऊन दयाळूपणाचे एक कृत्य असंख्य जीवन बदलू शकते.
+                त्यांचे निःस्वार्थ समर्पण अनेकांना प्रेरणा देत आहे, हे सिद्ध
+                करून की उत्कटतेने आणि वचनबद्धतेने प्रेरित होऊन दयाळूपणाचे एक
+                कृत्य असंख्य जीवन बदलू शकते.
               </p>
             </div>
             <motion.div
@@ -159,7 +185,7 @@ export default function About() {
               transition={{ duration: 0.3 }}
             >
               <img
-                src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600&h=400&fit=crop&q=80"
+                src="https://images.unsplash.com/photo-1560702226-a2317a8d6210?q=80&w=3088&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 alt="The Beginning"
                 className="rounded-lg shadow-xl object-cover w-full max-w-md h-64"
               />
