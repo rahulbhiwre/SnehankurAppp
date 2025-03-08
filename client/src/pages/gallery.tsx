@@ -5,7 +5,7 @@ import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 
-// Original images collection
+// Original images collection for Photos tab
 const images = [
   {
     src: "https://images.unsplash.com/photo-1526634332515-d56c5fd16991",
@@ -24,16 +24,7 @@ const images = [
   },
 ];
 
-// GitHub photos URLs (we'll fetch the actual files from the API)
-const githubPhotos = [
-  {
-    src: "", // Will be populated from GitHub API
-    alt: "Snehankur Activity",
-    category: "Activities",
-  },
-];
-
-// Videos
+// Videos (all using the same ID)
 const videos = [
   {
     id: "uW-7P_i3yQ4",
@@ -46,13 +37,13 @@ const videos = [
     description: "Highlights from our annual day",
   },
   {
-    id: "uW-7P_i3yQ4-E",
+    id: "uW-7P_i3yQ4",
     title: "Our Mission",
     description: "Learn about our work and mission",
   },
 ];
 
-// Media content for the media tab (photos only)
+// Media content for the media tab (will be populated with GitHub 'news' folder photos)
 const mediaContent = [];
 
 export default function Gallery() {
@@ -60,26 +51,43 @@ export default function Gallery() {
   const [photoIndex, setPhotoIndex] = useState(0);
   const [activeTab, setActiveTab] = useState("photos");
   const [allPhotos, setAllPhotos] = useState([...images]);
+  const [mediaPhotos, setMediaPhotos] = useState([]);
   const [selectedVideoUrl, setSelectedVideoUrl] = useState("");
   const [videoDialogOpen, setVideoDialogOpen] = useState(false);
+  const [mediaPhotoIndex, setMediaPhotoIndex] = useState(0);
+  const [mediaLightboxOpen, setMediaLightboxOpen] = useState(false);
 
   // Fetch GitHub photos
   useEffect(() => {
     const fetchGitHubPhotos = async () => {
       try {
-        // Fetch repository content - specifically the news folder
-        const repoResponse = await fetch(
+        // Fetch repository content - specifically the photos folder for the photos tab
+        const photosFolderResponse = await fetch(
+          "https://api.github.com/repos/rahulbhiwre/snehankur_photos/contents/photos",
+        );
+        
+        // Fetch repository content - specifically the news folder for the media tab
+        const newsFolderResponse = await fetch(
           "https://api.github.com/repos/rahulbhiwre/snehankur_photos/contents/news",
         );
 
-        if (!repoResponse.ok) {
+        if (!photosFolderResponse.ok || !newsFolderResponse.ok) {
           throw new Error("Failed to fetch GitHub repository");
         }
 
-        const folderContents = await repoResponse.json();
+        const photosFolderContents = await photosFolderResponse.json();
+        const newsFolderContents = await newsFolderResponse.json();
 
-        // Filter for jpg files
-        const photoFiles = folderContents.filter(
+        // Filter for image files in photos folder
+        const photoFiles = photosFolderContents.filter(
+          (file) =>
+            file.name.toLowerCase().endsWith(".jpg") ||
+            file.name.toLowerCase().endsWith(".jpeg") ||
+            file.name.toLowerCase().endsWith(".png"),
+        );
+
+        // Filter for image files in news folder
+        const newsPhotoFiles = newsFolderContents.filter(
           (file) =>
             file.name.toLowerCase().endsWith(".jpg") ||
             file.name.toLowerCase().endsWith(".jpeg") ||
@@ -93,8 +101,18 @@ export default function Gallery() {
           category: "Activities",
         }));
 
-        // Update all photos to include GitHub photos
+        // Create image objects for media section
+        const newMediaPhotos = newsPhotoFiles.map((file, index) => ({
+          src: file.download_url,
+          alt: `Snehankur Media Item ${index + 1}`,
+          category: "News",
+        }));
+
+        // Update photos for the Photos tab
         setAllPhotos([...images, ...newPhotos]);
+        
+        // Update media content for the Media tab
+        setMediaPhotos([...newMediaPhotos]);
       } catch (error) {
         console.error("Error fetching GitHub photos:", error);
       }
@@ -234,7 +252,7 @@ export default function Gallery() {
 
           <TabsContent value="media" className="mt-4">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {allPhotos.map((item, index) => (
+              {mediaPhotos.map((item, index) => (
                 <Card
                   key={index}
                   className="overflow-hidden border-orange-100 hover:border-orange-300 transition-colors"
@@ -242,7 +260,10 @@ export default function Gallery() {
                   <CardContent className="p-0">
                     <div
                       className="relative cursor-pointer"
-                      onClick={() => openLightbox(index)}
+                      onClick={() => {
+                        setMediaPhotoIndex(index);
+                        setMediaLightboxOpen(true);
+                      }}
                     >
                       <img
                         src={item.src}
@@ -261,11 +282,29 @@ export default function Gallery() {
           </TabsContent>
         </Tabs>
 
+        {/* Lightbox for Photos tab */}
         <Lightbox
           open={isOpen}
           close={() => setIsOpen(false)}
           index={photoIndex}
           slides={allPhotos.map((img) => ({ src: img.src, alt: img.alt }))}
+          render={{
+            slide: ({ slide }) => (
+              <img
+                src={slide.src}
+                alt={slide.alt}
+                style={{ maxHeight: "85vh", margin: "auto" }}
+              />
+            ),
+          }}
+        />
+        
+        {/* Lightbox for Media tab */}
+        <Lightbox
+          open={mediaLightboxOpen}
+          close={() => setMediaLightboxOpen(false)}
+          index={mediaPhotoIndex}
+          slides={mediaPhotos.map((img) => ({ src: img.src, alt: img.alt }))}
           render={{
             slide: ({ slide }) => (
               <img
