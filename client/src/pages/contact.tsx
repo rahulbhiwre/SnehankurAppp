@@ -18,12 +18,20 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { CheckCircle, Loader2 } from "lucide-react";
 
 const formSchema = z.object({
-  name: z.string().min(2, "Name must be at least 2 characters").nonempty("Name is required"),
-  email: z.string().email("Invalid email address").nonempty("Email is required"),
-  phone: z.string()
+  name: z
+    .string()
+    .min(2, "Name must be at least 2 characters")
+    .nonempty("Name is required"),
+  email: z
+    .string()
+    .email("Invalid email address")
+    .nonempty("Email is required"),
+  phone: z
+    .string()
     .regex(/^\d{10}$/, "Phone number must be exactly 10 digits")
     .nonempty("Phone number is required"),
-  message: z.string()
+  message: z
+    .string()
     .min(10, "Message must be at least 10 characters")
     .max(100, "Message cannot exceed 100 characters")
     .nonempty("Message is required"),
@@ -42,19 +50,19 @@ export default function Contact() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
-  
+
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
     try {
       // Use our local API endpoint
-      const response = await fetch('/api/contact', {
-        method: 'POST',
+      const response = await fetch("/api/contact", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(values),
       });
-      
+
       if (response.ok) {
         setSubmitSuccess(true);
         form.reset();
@@ -64,7 +72,7 @@ export default function Contact() {
         }, 3000);
       }
     } catch (error) {
-      console.error('Error submitting form:', error);
+      console.error("Error submitting form:", error);
     } finally {
       setIsSubmitting(false);
     }
@@ -76,32 +84,44 @@ export default function Contact() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {/* Contact Information */}
           <div>
-            <h1 className="text-4xl font-bold text-gray-900 mb-6">Get in Touch</h1>
+            <h1 className="text-4xl font-bold text-gray-900 mb-6">
+              Get in Touch
+            </h1>
             <p className="text-lg text-gray-600 mb-8">
-              We'd love to hear from you. Please reach out to us through any of these channels.
+              आम्हाला तुमचे म्हणणे ऐकायला आवडेल. कृपया यापैकी कोणत्याही माध्यमाद्वारे आमच्याशी संपर्क साधा.
             </p>
 
             <div className="space-y-6">
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">Address</h3>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                  Address
+                </h3>
                 <p className="text-gray-600">
-                  मापेगाव बु. (पुनर्वसन), परतूर-सेलु रोड,<br />
-                  तालुका परतूर, जिल्हा जालना<br />
-                  Maharashtra, India
+                  मापेगाव बु. (पुनर्वसन), परतूर-सेलु रोड,
+                  <br />
+                  तालुका परतूर, जिल्हा जालना
+                  <br />
+                  महाराष्ट्र, भारत 431501
                 </p>
               </div>
 
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">Contact</h3>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                  Contact
+                </h3>
                 <p className="text-gray-600">
-                  प्रदिप कातारे: +91 9689227171<br />
-                  नीता कातारे: +91 8767222142<br />
-                  Email: Samarpan7171@gmail.com
+                  प्रदिप कातारे: +91 9689227171
+                  <br />
+                  नीता कातारे: +91 8767222142
+                  <br />
+                  Samarpan7171@gmail.com
                 </p>
               </div>
 
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">Social Media</h3>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                  Social Media
+                </h3>
                 <div className="flex space-x-4">
                   <a
                     href="https://www.facebook.com/rahul.bhiwre/"
@@ -134,9 +154,14 @@ export default function Contact() {
 
           {/* Contact Form */}
           <div className="bg-white p-6 rounded-lg shadow-lg">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-6">Send us a Message</h2>
+            <h2 className="text-2xl font-semibold text-gray-900 mb-6">
+              Send us a Message
+            </h2>
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+              <form
+                onSubmit={form.handleSubmit(onSubmit)}
+                className="space-y-6"
+              >
                 <FormField
                   control={form.control}
                   name="name"
@@ -144,10 +169,10 @@ export default function Contact() {
                     <FormItem>
                       <FormLabel className="font-medium">Name</FormLabel>
                       <FormControl>
-                        <Input 
-                          placeholder="Your name" 
-                          className="focus-visible:ring-orange-500 transition-all" 
-                          {...field} 
+                        <Input
+                          placeholder="Your name"
+                          className="focus-visible:ring-orange-500 transition-all"
+                          {...field}
                         />
                       </FormControl>
                       <FormMessage className="text-red-500" />
@@ -162,11 +187,11 @@ export default function Contact() {
                     <FormItem>
                       <FormLabel className="font-medium">Email</FormLabel>
                       <FormControl>
-                        <Input 
-                          placeholder="Your email" 
-                          className="focus-visible:ring-orange-500 transition-all" 
+                        <Input
+                          placeholder="Your email"
+                          className="focus-visible:ring-orange-500 transition-all"
                           type="email"
-                          {...field} 
+                          {...field}
                         />
                       </FormControl>
                       <FormMessage className="text-red-500" />
@@ -181,12 +206,12 @@ export default function Contact() {
                     <FormItem>
                       <FormLabel className="font-medium">Phone</FormLabel>
                       <FormControl>
-                        <Input 
-                          placeholder="10 digit phone number" 
-                          className="focus-visible:ring-orange-500 transition-all" 
+                        <Input
+                          placeholder="10 digit phone number"
+                          className="focus-visible:ring-orange-500 transition-all"
                           inputMode="numeric"
                           pattern="[0-9]*"
-                          {...field} 
+                          {...field}
                         />
                       </FormControl>
                       <FormMessage className="text-red-500" />
@@ -221,12 +246,14 @@ export default function Contact() {
                 {submitSuccess && (
                   <Alert className="bg-green-50 text-green-700 border border-green-200 mb-4">
                     <CheckCircle className="h-4 w-4 mr-2" />
-                    <AlertDescription>Message sent successfully!</AlertDescription>
+                    <AlertDescription>
+                      Message sent successfully!
+                    </AlertDescription>
                   </Alert>
                 )}
-                
-                <Button 
-                  type="submit" 
+
+                <Button
+                  type="submit"
                   className="w-full bg-orange-500 hover:bg-orange-600 text-white transition-colors duration-300"
                   disabled={isSubmitting}
                 >

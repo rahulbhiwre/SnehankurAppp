@@ -14,7 +14,7 @@ import {
 export default function Donate() {
   const [showQR, setShowQR] = useState(false);
   const { toast } = useToast();
-  const upiId = "snehankur@upi";
+  const upiId = "9689227171@ybl";
 
   const copyUPIId = async () => {
     await navigator.clipboard.writeText(upiId);
@@ -29,7 +29,8 @@ export default function Donate() {
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">Donate</h1>
           <p className="text-lg text-gray-600">
-            Your contribution helps us provide better care and opportunities for our children
+            तुमच्या योगदानामुळे आम्हाला आमच्या मुलांसाठी चांगली काळजी आणि संधी
+            उपलब्ध होण्यास मदत होते.
           </p>
         </div>
 
@@ -51,9 +52,9 @@ export default function Donate() {
                     <FaCopy className="h-4 w-4" />
                   </Button>
                 </div>
-                <Button 
-                  variant="default" 
-                  className="w-full sm:w-auto bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-md transition-all hover:shadow-lg transform hover:-translate-y-0.5" 
+                <Button
+                  variant="default"
+                  className="w-full sm:w-auto bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-md transition-all hover:shadow-lg transform hover:-translate-y-0.5"
                   onClick={() => setShowQR(true)}
                 >
                   <FaQrcode className="mr-2 h-5 w-5" />
@@ -89,27 +90,27 @@ export default function Donate() {
               <div className="space-y-4">
                 <div>
                   <p className="font-medium text-gray-900">Account Name</p>
-                  <p className="text-gray-600">Snehankur Orphanage Trust</p>
+                  <p className="text-gray-600">Snehankur</p>
                 </div>
                 <Separator />
                 <div>
                   <p className="font-medium text-gray-900">Account Number</p>
-                  <p className="text-gray-600">1234 5678 9012 3456</p>
+                  <p className="text-gray-600">6002101008601</p>
                 </div>
                 <Separator />
                 <div>
                   <p className="font-medium text-gray-900">IFSC Code</p>
-                  <p className="text-gray-600">ABCD0123456</p>
+                  <p className="text-gray-600">CNRB0006002</p>
                 </div>
                 <Separator />
                 <div>
                   <p className="font-medium text-gray-900">Bank Name</p>
-                  <p className="text-gray-600">Sample Bank</p>
+                  <p className="text-gray-600">Canara Bank</p>
                 </div>
                 <Separator />
                 <div>
                   <p className="font-medium text-gray-900">Branch</p>
-                  <p className="text-gray-600">Main Branch</p>
+                  <p className="text-gray-600">Partur</p>
                 </div>
               </div>
             </CardContent>
@@ -117,7 +118,7 @@ export default function Donate() {
 
           <div className="text-center text-gray-600 text-sm">
             <p>For any queries related to donations, please contact us at:</p>
-            <p className="font-medium">donations@snehankur.org</p>
+            <p className="font-medium">Samarpan7171@gmail.com</p>
           </div>
         </div>
       </div>

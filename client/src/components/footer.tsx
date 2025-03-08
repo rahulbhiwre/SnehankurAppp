@@ -37,14 +37,30 @@ export default function Footer() {
               </a>
             </div>
           </div>
-          
+
           <div>
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2 text-sm text-gray-600">
-              <li><a href="/about" className="hover:text-primary">About Us</a></li>
-              <li><a href="/gallery" className="hover:text-primary">Gallery</a></li>
-              <li><a href="/donate" className="hover:text-primary">Donate</a></li>
-              <li><a href="/contact" className="hover:text-primary">Contact</a></li>
+              <li>
+                <a href="/about" className="hover:text-primary">
+                  About Us
+                </a>
+              </li>
+              <li>
+                <a href="/gallery" className="hover:text-primary">
+                  Gallery
+                </a>
+              </li>
+              <li>
+                <a href="/donate" className="hover:text-primary">
+                  Donate
+                </a>
+              </li>
+              <li>
+                <a href="/contact" className="hover:text-primary">
+                  Contact
+                </a>
+              </li>
             </ul>
           </div>
 
@@ -52,7 +68,7 @@ export default function Footer() {
             <h3 className="text-lg font-semibold mb-4">Connect With Us</h3>
             <div className="flex space-x-4">
               <a
-                href="https://facebook.com"
+                href="https://www.facebook.com/rahul.bhiwre/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-600 hover:text-primary"
@@ -60,7 +76,7 @@ export default function Footer() {
                 <FaFacebook size={24} />
               </a>
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/rahulbhiwre/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-600 hover:text-primary"
@@ -68,7 +84,7 @@ export default function Footer() {
                 <FaInstagram size={24} />
               </a>
               <a
-                href="https://wa.me/1234567890"
+                href="https://wa.me/9689227171"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-600 hover:text-primary"
@@ -81,7 +97,8 @@ export default function Footer() {
 
         <div className="mt-8 pt-8 border-t border-gray-200">
           <p className="text-center text-gray-400 text-sm">
-            © {new Date().getFullYear()} Snehankur Orphanage. All rights reserved.
+            © {new Date().getFullYear()} Snehankur Orphanage. All rights
+            reserved.
           </p>
         </div>
       </div>
