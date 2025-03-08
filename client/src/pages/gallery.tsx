@@ -1,30 +1,13 @@
+
 import { useState, useEffect } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent } from "@/components/ui/card";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
-// Original images collection for Photos tab
-const images = [
-  {
-    src: "https://images.unsplash.com/photo-1526634332515-d56c5fd16991",
-    alt: "Community event",
-    category: "Events",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1511949860663-92c5c57d48a7",
-    alt: "Children's artwork",
-    category: "Activities",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1516627145497-ae6968895b40",
-    alt: "Children playing outdoors",
-    category: "Outdoor Activities",
-  },
-];
-
-// Videos (all using the same ID)
+// Videos with specific YouTube ID
 const videos = [
   {
     id: "uW-7P_i3yQ4",
@@ -43,14 +26,11 @@ const videos = [
   },
 ];
 
-// Media content for the media tab (will be populated with GitHub 'news' folder photos)
-const mediaContent = [];
-
 export default function Gallery() {
   const [isOpen, setIsOpen] = useState(false);
   const [photoIndex, setPhotoIndex] = useState(0);
   const [activeTab, setActiveTab] = useState("photos");
-  const [allPhotos, setAllPhotos] = useState([...images]);
+  const [photoSectionImages, setPhotoSectionImages] = useState([]);
   const [mediaPhotos, setMediaPhotos] = useState([]);
   const [selectedVideoUrl, setSelectedVideoUrl] = useState("");
   const [videoDialogOpen, setVideoDialogOpen] = useState(false);
@@ -63,12 +43,12 @@ export default function Gallery() {
       try {
         // Fetch repository content - specifically the photos folder for the photos tab
         const photosFolderResponse = await fetch(
-          "https://api.github.com/repos/rahulbhiwre/snehankur_photos/contents/photos",
+          "https://api.github.com/repos/rahulbhiwre/snehankur_photos/contents/photos"
         );
 
         // Fetch repository content - specifically the news folder for the media tab
         const newsFolderResponse = await fetch(
-          "https://api.github.com/repos/rahulbhiwre/snehankur_photos/contents/news",
+          "https://api.github.com/repos/rahulbhiwre/snehankur_photos/contents/news"
         );
 
         if (!photosFolderResponse.ok || !newsFolderResponse.ok) {
@@ -83,7 +63,7 @@ export default function Gallery() {
           (file) =>
             file.name.toLowerCase().endsWith(".jpg") ||
             file.name.toLowerCase().endsWith(".jpeg") ||
-            file.name.toLowerCase().endsWith(".png"),
+            file.name.toLowerCase().endsWith(".png")
         );
 
         // Filter for image files in news folder
@@ -91,28 +71,28 @@ export default function Gallery() {
           (file) =>
             file.name.toLowerCase().endsWith(".jpg") ||
             file.name.toLowerCase().endsWith(".jpeg") ||
-            file.name.toLowerCase().endsWith(".png"),
+            file.name.toLowerCase().endsWith(".png")
         );
 
         // Create image objects for each photo
-        const newPhotos = photoFiles.map((file, index) => ({
+        const photosFromGithub = photoFiles.map((file, index) => ({
           src: file.download_url,
           alt: `Snehankur Photo ${index + 1}`,
           category: "Activities",
         }));
 
         // Create image objects for media section
-        const newMediaPhotos = newsPhotoFiles.map((file, index) => ({
+        const mediaFromGithub = newsPhotoFiles.map((file, index) => ({
           src: file.download_url,
           alt: `Snehankur Media Item ${index + 1}`,
           category: "News",
         }));
 
-        // Update photos for the Photos tab
-        setAllPhotos([...images, ...newPhotos]);
+        // Update photos for the Photos tab - only use GitHub photos
+        setPhotoSectionImages(photosFromGithub);
 
-        // Update media content for the Media tab
-        setMediaPhotos([...newMediaPhotos]);
+        // Update media content for the Media tab - only use GitHub news photos
+        setMediaPhotos(mediaFromGithub);
       } catch (error) {
         console.error("Error fetching GitHub photos:", error);
       }
@@ -174,7 +154,7 @@ export default function Gallery() {
 
           <TabsContent value="photos" className="mt-4">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {allPhotos.map((image, index) => (
+              {photoSectionImages.map((image, index) => (
                 <Card
                   key={index}
                   className="overflow-hidden cursor-pointer transform hover:scale-[1.02] transition-transform duration-200 border-orange-100 hover:border-orange-300"
@@ -203,18 +183,18 @@ export default function Gallery() {
               {videos.map((video, index) => (
                 <Card
                   key={index}
-                  className="overflow-hidden cursor-pointer gallery-video-card border-orange-100"
+                  className="overflow-hidden cursor-pointer gallery-video-card border-orange-100 hover:shadow-lg transition-all duration-300"
                   onClick={() => openVideoDialog(video.id)}
                 >
                   <CardContent className="p-0">
                     <div className="aspect-video relative">
                       <img
-                        src={`https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`}
+                        src={`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`}
                         alt={video.title}
                         className="w-full h-full object-cover"
                       />
                       <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center shadow-lg">
+                        <div className="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center shadow-lg transform hover:scale-110 transition-transform">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className="h-8 w-8 text-white"
@@ -255,16 +235,14 @@ export default function Gallery() {
               {mediaPhotos.map((item, index) => (
                 <Card
                   key={index}
-                  className="overflow-hidden border-orange-100 hover:border-orange-300 transition-colors"
+                  className="overflow-hidden cursor-pointer transform hover:scale-[1.02] transition-transform duration-200 border-orange-100 hover:border-orange-300"
+                  onClick={() => {
+                    setMediaPhotoIndex(index);
+                    setMediaLightboxOpen(true);
+                  }}
                 >
                   <CardContent className="p-0">
-                    <div
-                      className="relative cursor-pointer"
-                      onClick={() => {
-                        setMediaPhotoIndex(index);
-                        setMediaLightboxOpen(true);
-                      }}
-                    >
+                    <div className="relative">
                       <img
                         src={item.src}
                         alt={item.alt}
@@ -287,7 +265,7 @@ export default function Gallery() {
           open={isOpen}
           close={() => setIsOpen(false)}
           index={photoIndex}
-          slides={allPhotos.map((img) => ({ src: img.src, alt: img.alt }))}
+          slides={photoSectionImages.map((img) => ({ src: img.src, alt: img.alt }))}
           render={{
             slide: ({ slide }) => (
               <img
@@ -319,6 +297,9 @@ export default function Gallery() {
 
       <Dialog open={videoDialogOpen} onOpenChange={setVideoDialogOpen}>
         <DialogContent className="sm:max-w-3xl">
+          <DialogTitle>
+            <VisuallyHidden>Video Player</VisuallyHidden>
+          </DialogTitle>
           <div className="aspect-video">
             <iframe
               src={selectedVideoUrl}
