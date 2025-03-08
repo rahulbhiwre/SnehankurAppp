@@ -85,17 +85,18 @@ export default function Contact() {
               <div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">Address</h3>
                 <p className="text-gray-600">
-                  123 Charity Lane<br />
-                  Mumbai, Maharashtra 400001<br />
-                  India
+                  मापेगाव बु. (पुनर्वसन), परतूर-सेलु रोड,<br />
+                  तालुका परतूर, जिल्हा जालना<br />
+                  Maharashtra, India
                 </p>
               </div>
 
               <div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">Contact</h3>
                 <p className="text-gray-600">
-                  Phone: +91 1234567890<br />
-                  Email: contact@snehankur.org
+                  प्रदिप कातारे: +91 9689227171<br />
+                  नीता कातारे: +91 8767222142<br />
+                  Email: Samarpan7171@gmail.com
                 </p>
               </div>
 
@@ -103,7 +104,7 @@ export default function Contact() {
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">Social Media</h3>
                 <div className="flex space-x-4">
                   <a
-                    href="https://www.facebook.com/profile.php?id=100002800944155"
+                    href="https://www.facebook.com/rahul.bhiwre/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-gray-600 hover:text-primary"
@@ -111,7 +112,7 @@ export default function Contact() {
                     <FaFacebook size={24} />
                   </a>
                   <a
-                    href="https://instagram.com/katare.pradeep7171"
+                    href="https://www.instagram.com/rahulbhiwre/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-gray-600 hover:text-primary"

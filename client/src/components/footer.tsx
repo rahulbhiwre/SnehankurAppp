@@ -10,6 +10,32 @@ export default function Footer() {
             <p className="text-gray-600 text-sm">
               Providing love, care and support to children in need
             </p>
+            <div className="flex space-x-4 mt-4">
+              <a
+                href="https://www.facebook.com/rahul.bhiwre/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-600 hover:text-primary"
+              >
+                <FaFacebook size={20} />
+              </a>
+              <a
+                href="https://www.instagram.com/rahulbhiwre/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-600 hover:text-primary"
+              >
+                <FaInstagram size={20} />
+              </a>
+              <a
+                href="https://wa.me/919689227171"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-600 hover:text-primary"
+              >
+                <FaWhatsapp size={20} />
+              </a>
+            </div>
           </div>
           
           <div>
