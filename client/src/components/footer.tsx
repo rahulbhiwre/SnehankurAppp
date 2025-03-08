@@ -1,77 +1,21 @@
+
 import { FaFacebook, FaInstagram, FaWhatsapp } from "react-icons/fa";
+import { Link } from "wouter";
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-50 border-t">
-      <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+    <footer className="bg-orange-50 border-t border-orange-100 py-10">
+      <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Connect With Us */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Snehankur Orphanage</h3>
-            <p className="text-gray-600 text-sm">
-              Providing love, care and support to children in need
-            </p>
-            <div className="flex space-x-4 mt-4">
+            <h3 className="text-lg font-semibold mb-4 text-orange-600">Connect With Us</h3>
+            <div className="flex space-x-4 mb-4">
               <a
                 href="https://www.facebook.com/rahul.bhiwre/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-600 hover:text-primary"
-              >
-                <FaFacebook size={20} />
-              </a>
-              <a
-                href="https://www.instagram.com/rahulbhiwre/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-600 hover:text-primary"
-              >
-                <FaInstagram size={20} />
-              </a>
-              <a
-                href="https://wa.me/919689227171"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-600 hover:text-primary"
-              >
-                <FaWhatsapp size={20} />
-              </a>
-            </div>
-          </div>
-
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
-            <ul className="space-y-2 text-sm text-gray-600">
-              <li>
-                <a href="/about" className="hover:text-primary">
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a href="/gallery" className="hover:text-primary">
-                  Gallery
-                </a>
-              </li>
-              <li>
-                <a href="/donate" className="hover:text-primary">
-                  Donate
-                </a>
-              </li>
-              <li>
-                <a href="/contact" className="hover:text-primary">
-                  Contact
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Connect With Us</h3>
-            <div className="flex space-x-4">
-              <a
-                href="https://www.facebook.com/rahul.bhiwre/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-600 hover:text-primary"
+                className="text-gray-600 hover:text-orange-500 transition-colors"
               >
                 <FaFacebook size={24} />
               </a>
@@ -79,7 +23,7 @@ export default function Footer() {
                 href="https://www.instagram.com/rahulbhiwre/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-600 hover:text-primary"
+                className="text-gray-600 hover:text-orange-500 transition-colors"
               >
                 <FaInstagram size={24} />
               </a>
@@ -87,18 +31,70 @@ export default function Footer() {
                 href="https://wa.me/9689227171"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-600 hover:text-primary"
+                className="text-gray-600 hover:text-orange-500 transition-colors"
               >
                 <FaWhatsapp size={24} />
               </a>
             </div>
+            <div className="text-gray-600 text-sm">
+              <p className="mb-1">Email: Samarpan7171@gmail.com</p>
+              <p className="mb-1">Phone: +91 9689227171 / 8767222142</p>
+            </div>
+          </div>
+
+          {/* Quick Links */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4 text-orange-600">Quick Links</h3>
+            <ul className="space-y-2">
+              <li>
+                <Link href="/" className="text-gray-600 hover:text-orange-500 transition-colors">
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link href="/about" className="text-gray-600 hover:text-orange-500 transition-colors">
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link href="/gallery" className="text-gray-600 hover:text-orange-500 transition-colors">
+                  Gallery
+                </Link>
+              </li>
+              <li>
+                <Link href="/donate" className="text-gray-600 hover:text-orange-500 transition-colors">
+                  Donate
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="text-gray-600 hover:text-orange-500 transition-colors">
+                  Contact
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Address */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4 text-orange-600">Our Address</h3>
+            <address className="text-gray-600 text-sm not-italic">
+              <p className="mb-3">
+                मापेगाव बु. (पुनर्वसन), <br />
+                परतूर-सेलु रोड, <br />
+                तालुका परतूर, जिल्हा जालना
+              </p>
+              <p className="mb-1">
+                प्रदिप कातारे - ९६८९२२७१७१ <br />
+                नीता कातारे - ८७६७२२२१४२
+              </p>
+            </address>
           </div>
         </div>
 
-        <div className="mt-8 pt-8 border-t border-gray-200">
-          <p className="text-center text-gray-400 text-sm">
-            © {new Date().getFullYear()} Snehankur Orphanage. All rights
-            reserved.
+        {/* Copyright */}
+        <div className="mt-8 pt-6 border-t border-orange-200">
+          <p className="text-center text-gray-500 text-sm">
+            © {new Date().getFullYear()} स्नेहांकुर अनाथाश्रम. सर्व हक्क राखीव.
           </p>
         </div>
       </div>
