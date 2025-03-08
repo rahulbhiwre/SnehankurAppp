@@ -15,7 +15,8 @@ export default function Home() {
               सेवा समर्पण सामर्थ्य
             </p>
             <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-              Providing love, care, and support to children in need. Join us in making a difference in their lives.
+              शृखला पायी असू दे, मी गतीचे गीत गाई दुःख उधळायास आता, आसवांना वेळ नाही...!
+              <br />- बाबा आमटे
             </p>
             <div className="flex justify-center gap-4">
               <Link href="/donate">
