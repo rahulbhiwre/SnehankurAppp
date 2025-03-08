@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent } from "@/components/ui/card";
@@ -15,12 +14,12 @@ const videos = [
     description: "Stories from our volunteers",
   },
   {
-    id: "uW-7P_i3yQ4",
+    id: "7c08CAWhQtU",
     title: "Annual Day Celebration",
     description: "Highlights from our annual day",
   },
   {
-    id: "uW-7P_i3yQ4",
+    id: "UGnSyurERYo",
     title: "Our Mission",
     description: "Learn about our work and mission",
   },
@@ -43,12 +42,12 @@ export default function Gallery() {
       try {
         // Fetch repository content - specifically the photos folder for the photos tab
         const photosFolderResponse = await fetch(
-          "https://api.github.com/repos/rahulbhiwre/snehankur_photos/contents/photos"
+          "https://api.github.com/repos/rahulbhiwre/snehankur_photos/contents/photos",
         );
 
         // Fetch repository content - specifically the news folder for the media tab
         const newsFolderResponse = await fetch(
-          "https://api.github.com/repos/rahulbhiwre/snehankur_photos/contents/news"
+          "https://api.github.com/repos/rahulbhiwre/snehankur_photos/contents/news",
         );
 
         if (!photosFolderResponse.ok || !newsFolderResponse.ok) {
@@ -63,7 +62,7 @@ export default function Gallery() {
           (file) =>
             file.name.toLowerCase().endsWith(".jpg") ||
             file.name.toLowerCase().endsWith(".jpeg") ||
-            file.name.toLowerCase().endsWith(".png")
+            file.name.toLowerCase().endsWith(".png"),
         );
 
         // Filter for image files in news folder
@@ -71,7 +70,7 @@ export default function Gallery() {
           (file) =>
             file.name.toLowerCase().endsWith(".jpg") ||
             file.name.toLowerCase().endsWith(".jpeg") ||
-            file.name.toLowerCase().endsWith(".png")
+            file.name.toLowerCase().endsWith(".png"),
         );
 
         // Create image objects for each photo
@@ -265,7 +264,10 @@ export default function Gallery() {
           open={isOpen}
           close={() => setIsOpen(false)}
           index={photoIndex}
-          slides={photoSectionImages.map((img) => ({ src: img.src, alt: img.alt }))}
+          slides={photoSectionImages.map((img) => ({
+            src: img.src,
+            alt: img.alt,
+          }))}
           render={{
             slide: ({ slide }) => (
               <img
