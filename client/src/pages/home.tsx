@@ -9,7 +9,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-4">
-              Welcome to <span className="text-primary">स्नेहांकुर</span>
+              Welcome to <span style={{ color: "#ff80ff" }}>स्नेहांकुर</span>
             </h1>
             <p className="text-2xl text-primary mb-6 font-semibold">
               सेवा समर्पण सामर्थ्य

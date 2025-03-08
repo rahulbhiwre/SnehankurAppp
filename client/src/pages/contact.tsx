@@ -103,7 +103,7 @@ export default function Contact() {
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">Social Media</h3>
                 <div className="flex space-x-4">
                   <a
-                    href="https://facebook.com"
+                    href="https://www.facebook.com/profile.php?id=100002800944155"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-gray-600 hover:text-primary"
@@ -111,7 +111,7 @@ export default function Contact() {
                     <FaFacebook size={24} />
                   </a>
                   <a
-                    href="https://instagram.com"
+                    href="https://instagram.com/katare.pradeep7171"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-gray-600 hover:text-primary"
@@ -119,7 +119,7 @@ export default function Contact() {
                     <FaInstagram size={24} />
                   </a>
                   <a
-                    href="https://wa.me/1234567890"
+                    href="https://wa.me/919689227171"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-gray-600 hover:text-primary"
