@@ -15,10 +15,8 @@ export default defineConfig({
     emptyOutDir: true, // Clears old files before building
   },
   server: {
-    port: 5000,
+    port: 8081,
     open: true,
-    host: "0.0.0.0",
-    allowedHosts: ["all", "ba2e5091-1ee4-4f70-8b81-2c7d3840714c-00-3kjg6ujxw8qhw.janeway.replit.dev"],
   },
   base: "/", // Use "/" for Cloudflare Pages
 });

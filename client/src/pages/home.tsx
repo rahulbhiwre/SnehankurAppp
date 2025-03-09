@@ -15,14 +15,22 @@ export default function Home() {
               सेवा समर्पण सामर्थ्य
             </p>
             <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-              Providing love, care, and support to children in need. Join us in making a difference in their lives.
+              Providing love, care, and support to children in need. Join us in
+              making a difference in their lives.
             </p>
             <div className="flex justify-center gap-4">
               <Link href="/donate">
-                <Button size="lg" className="bg-orange-500 hover:bg-orange-600 text-white">Donate</Button>
+                <Button
+                  size="lg"
+                  className="bg-orange-500 hover:bg-orange-600 text-white"
+                >
+                  Donate
+                </Button>
               </Link>
               <Link href="/contact">
-                <Button variant="outline" size="lg">Contact Us</Button>
+                <Button variant="outline" size="lg">
+                  Contact Us
+                </Button>
               </Link>
             </div>
           </div>
@@ -44,7 +52,7 @@ export default function Home() {
               className="rounded-lg shadow-md aspect-video object-cover"
             />
             <img
-              src="https://images.unsplash.com/photo-1526529613260-5f7cad1eb4b4"
+              src="https://images.unsplash.com/photo-1502086223501-7ea6ecd79368"
               alt="Our facility"
               className="rounded-lg shadow-md aspect-video object-cover"
             />
@@ -57,10 +65,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-3xl font-bold text-gray-900 mb-8">Our Mission</h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            At Snehankur, we believe every child deserves a loving home and the opportunity 
-            to reach their full potential. Through dedication and compassion, we provide 
-            education, healthcare, and emotional support to create a nurturing environment 
-            where children can thrive.
+            At Snehankur, we believe every child deserves a loving home and the
+            opportunity to reach their full potential. Through dedication and
+            compassion, we provide education, healthcare, and emotional support
+            to create a nurturing environment where children can thrive.
           </p>
         </div>
       </section>
