@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "type": "module",
   "license": "MIT",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
+"homepage": "https://rahulbhiwre.github.io/snehankurr",
+"scripts": {
+  "build": "vite build",
+  "predeploy": "npm run build",
+  "deploy": "gh-pages -d client/dist"
+},
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
     "@jridgewell/trace-mapping": "^0.3.25",
@@ -86,6 +87,7 @@
     "@vitejs/plugin-react": "^4.3.4",
     "autoprefixer": "^10.4.20",
     "esbuild": "^0.25.0",
+    "gh-pages": "^6.3.0",
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.14",
     "tsx": "^4.19.1",
