@@ -18,7 +18,7 @@ export default defineConfig({
     port: 5000,
     open: true,
     host: "0.0.0.0",
-    allowedHosts: ["all", "ba2e5091-1ee4-4f70-8b81-2c7d3840714c-00-3kjg6ujxw8qhw.janeway.replit.dev", "1cc25ec8-9a7a-4bf4-8b1d-2ba90bfc9aa8-00-1jlukqahx8kmx.sisko.replit.dev"],
+    allowedHosts: ["all", "ba2e5091-1ee4-4f70-8b81-2c7d3840714c-00-3kjg6ujxw8qhw.janeway.replit.dev"],
   },
   base: "/", // Use "/" for Cloudflare Pages
 });
