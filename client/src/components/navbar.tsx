@@ -9,7 +9,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   const navigation = [
-    { name: "Home", href: "/snehankur" },
+    { name: "Home", href: "/snehankurr" },
     { name: "About", href: "/about" },
     { name: "Gallery", href: "/gallery" },
     { name: "Donate", href: "/donate" },
@@ -21,7 +21,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-20">
           <div className="flex-shrink-0 flex items-center">
-            <Link href="/">
+            <Link href="/snehankurr">
               <img
                 src="https://github.com/snehankur-family/website-photos/blob/main/snehakurLogo_50.jpg?raw=true"
                 alt="Snehankur Logo"
