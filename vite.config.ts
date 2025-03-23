@@ -20,5 +20,5 @@ export default defineConfig({
     port: 8081,
     open: true,
   },
-  base: "/snehankurr", // Replace with your repository name
+  base: "/", // Replace with your repository name
 });

@@ -67,7 +67,7 @@ export default function Navbar() {
               >
                 <div className="flex flex-col items-center mt-4 mb-6">
                   <img
-                    src="/snehakurLogo_50.jpg"
+                    src="https://github.com/snehankur-family/website-photos/blob/main/snehakurLogo_50.jpg?raw=true"
                     alt="Snehankur Logo"
                     className="h-12 w-auto mb-4"
                   />
