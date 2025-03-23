@@ -23,7 +23,7 @@ export default function Navbar() {
           <div className="flex-shrink-0 flex items-center">
             <Link href="/">
               <img
-                src="/snehakurLogo_50.jpg"
+                src="https://github.com/snehankur-family/website-photos/blob/main/snehakurLogo_50.jpg?raw=true"
                 alt="Snehankur Logo"
                 className="h-16 w-auto"
               />
