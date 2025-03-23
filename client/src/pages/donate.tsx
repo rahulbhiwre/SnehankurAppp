@@ -14,7 +14,7 @@ import {
 export default function Donate() {
   const [showQR, setShowQR] = useState(false);
   const { toast } = useToast();
-  const upiId = "9689227171@ybl";
+  const upiId = "300046175008601@cnrb";
 
   const copyUPIId = async () => {
     await navigator.clipboard.writeText(upiId);
@@ -72,7 +72,7 @@ export default function Donate() {
               </DialogHeader>
               <div className="flex items-center justify-center p-6 bg-gradient-to-r from-orange-50 to-orange-100 rounded-md">
                 <img
-                  src="/qr-code.jpg"
+                  src="https://github.com/snehankur-family/website-photos/blob/main/photos/QR/Screenshot%202025-03-17%20at%2012.49.41.png?raw=true"
                   alt="UPI QR Code"
                   className="max-w-full h-auto rounded-lg shadow-md border-2 border-orange-200"
                 />

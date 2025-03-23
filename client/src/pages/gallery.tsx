@@ -9,17 +9,17 @@ import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 // Videos with specific YouTube ID
 const videos = [
   {
-    id: "uW-7P_i3yQ4",
+    id: "_VQpIxDymMw",
     title: "Volunteer Experiences",
     description: "Stories from our volunteers",
   },
   {
-    id: "7c08CAWhQtU",
+    id: "rAd2kdq5Ggk",
     title: "Annual Day Celebration",
     description: "Highlights from our annual day",
   },
   {
-    id: "UGnSyurERYo",
+    id: "_VQpIxDymMw",
     title: "Our Mission",
     description: "Learn about our work and mission",
   },
@@ -42,12 +42,12 @@ export default function Gallery() {
       try {
         // Fetch repository content - specifically the photos folder for the photos tab
         const photosFolderResponse = await fetch(
-          "https://api.github.com/repos/rahulbhiwre/snehankur_photos/contents/photos",
+          "https://api.github.com/repos/snehankur-family/website-photos/contents/photos"
         );
 
         // Fetch repository content - specifically the news folder for the media tab
         const newsFolderResponse = await fetch(
-          "https://api.github.com/repos/rahulbhiwre/snehankur_photos/contents/news",
+          "https://api.github.com/repos/snehankur-family/website-photos/contents/news"
         );
 
         if (!photosFolderResponse.ok || !newsFolderResponse.ok) {
@@ -62,7 +62,7 @@ export default function Gallery() {
           (file) =>
             file.name.toLowerCase().endsWith(".jpg") ||
             file.name.toLowerCase().endsWith(".jpeg") ||
-            file.name.toLowerCase().endsWith(".png"),
+            file.name.toLowerCase().endsWith(".png")
         );
 
         // Filter for image files in news folder
@@ -70,7 +70,7 @@ export default function Gallery() {
           (file) =>
             file.name.toLowerCase().endsWith(".jpg") ||
             file.name.toLowerCase().endsWith(".jpeg") ||
-            file.name.toLowerCase().endsWith(".png"),
+            file.name.toLowerCase().endsWith(".png")
         );
 
         // Create image objects for each photo

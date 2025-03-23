@@ -43,17 +43,20 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <img
-              src="https://images.unsplash.com/photo-1489710437720-ebb67ec84dd2"
+              // src="https://images.unsplash.com/photo-1489710437720-ebb67ec84dd2"
+              src="https://github.com/snehankur-family/website-photos/blob/main/home-page/IMG-20250316-WA0002.jpg?raw=true"
               alt="Happy children"
               className="rounded-lg shadow-md aspect-video object-cover"
             />
             <img
-              src="https://images.unsplash.com/photo-1606092195730-5d7b9af1efc5"
+              // src="https://images.unsplash.com/photo-1606092195730-5d7b9af1efc5"
+              src="https://github.com/snehankur-family/website-photos/blob/main/home-page/IMG-20250316-WA0003.jpg?raw=true"
               alt="Children activities"
               className="rounded-lg shadow-md aspect-video object-cover"
             />
             <img
-              src="https://images.unsplash.com/photo-1502086223501-7ea6ecd79368"
+              // src="https://images.unsplash.com/photo-1502086223501-7ea6ecd79368"
+              src="https://github.com/snehankur-family/website-photos/blob/main/home-page/IMG-20250316-WA0018.jpg?raw=true"
               alt="Our facility"
               className="rounded-lg shadow-md aspect-video object-cover"
             />

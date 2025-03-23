@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "type": "module",
   "license": "MIT",
-  "scripts": {
-    "dev": "vite",
+    "scripts": {
     "build": "vite build",
-    "preview": "vite preview"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d client/dist"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",

@@ -1,10 +1,6 @@
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
-import {
-  Sheet,
-  SheetContent,
-  SheetTrigger,
-} from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import { useState } from "react";
 
@@ -26,9 +22,9 @@ export default function Navbar() {
         <div className="flex justify-between h-20">
           <div className="flex-shrink-0 flex items-center">
             <Link href="/">
-              <img 
-                src="/snehakurLogo_50.jpg" 
-                alt="Snehankur Logo" 
+              <img
+                src="/snehakurLogo_50.jpg"
+                alt="Snehankur Logo"
                 className="h-16 w-auto"
               />
             </Link>
@@ -41,8 +37,8 @@ export default function Navbar() {
                 <Button
                   variant={location === item.href ? "default" : "ghost"}
                   className={`text-sm font-medium transition-all duration-300 transform hover:scale-105 ${
-                    location === item.href 
-                      ? "bg-primary" 
+                    location === item.href
+                      ? "bg-primary"
                       : "hover:bg-orange-100 hover:text-orange-600"
                   }`}
                 >
@@ -56,16 +52,23 @@ export default function Navbar() {
           <div className="flex items-center md:hidden">
             <Sheet open={open} onOpenChange={setOpen}>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="hover:bg-orange-50">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="hover:bg-orange-50"
+                >
                   <Menu className="h-6 w-6 text-orange-600" />
                   <span className="sr-only">Open menu</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="bg-white shadow-lg border-l border-orange-100">
+              <SheetContent
+                side="right"
+                className="bg-white shadow-lg border-l border-orange-100"
+              >
                 <div className="flex flex-col items-center mt-4 mb-6">
-                  <img 
-                    src="/snehakurLogo_50.jpg" 
-                    alt="Snehankur Logo" 
+                  <img
+                    src="/snehakurLogo_50.jpg"
+                    alt="Snehankur Logo"
                     className="h-12 w-auto mb-4"
                   />
                 </div>
@@ -80,8 +83,8 @@ export default function Navbar() {
                         <Button
                           variant={location === item.href ? "default" : "ghost"}
                           className={`w-full justify-start text-base font-medium transition-all duration-300 transform hover:scale-105 ${
-                            location === item.href 
-                              ? "bg-orange-100 text-orange-600" 
+                            location === item.href
+                              ? "bg-orange-100 text-orange-600"
                               : "hover:bg-orange-50 hover:text-orange-500"
                           }`}
                         >
