@@ -9,9 +9,99 @@ import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 // Videos with specific YouTube ID
 const videos = [
   {
-    id: "_VQpIxDymMw",
+    id: "mGjrqsbeT0Q",
     title: "Volunteer Experiences",
     description: "Stories from our volunteers",
+  },
+  {
+    id: "jPL3U8TZTA0",
+    title: "Annual Day Celebration",
+    description: "Highlights from our annual day",
+  },
+  {
+    id: "WhW0h3pOtv4",
+    title: "Our Mission",
+    description: "Learn about our work and mission",
+  },
+  {
+    id: "O_O1iFgTgeA",
+    title: "Annual Day Celebration",
+    description: "Highlights from our annual day",
+  },
+  {
+    id: "jPL3U8TZTA0",
+    title: "Annual Day Celebration",
+    description: "Highlights from our annual day",
+  },
+  {
+    id: "9G3AezByQzY",
+    title: "Annual Day Celebration",
+    description: "Highlights from our annual day",
+  },
+  {
+    id: "LgjT8Es4wJA",
+    title: "Annual Day Celebration",
+    description: "Highlights from our annual day",
+  },
+  {
+    id: "0JrtY9esY1M",
+    title: "Annual Day Celebration",
+    description: "Highlights from our annual day",
+  },
+  {
+    id: "y1G9VTSlRL0",
+    title: "Annual Day Celebration",
+    description: "Highlights from our annual day",
+  },
+  {
+    id: "RGujSDQrPuU",
+    title: "Annual Day Celebration",
+    description: "Highlights from our annual day",
+  },
+  {
+    id: "NDaHbeBQsDU",
+    title: "Annual Day Celebration",
+    description: "Highlights from our annual day",
+  },
+  {
+    id: "kcMNW_yrIHk",
+    title: "Annual Day Celebration",
+    description: "Highlights from our annual day",
+  },
+  {
+    id: "8QZ9kvEmm_c",
+    title: "Annual Day Celebration",
+    description: "Highlights from our annual day",
+  },
+  {
+    id: "UN2amGHacYo",
+    title: "Annual Day Celebration",
+    description: "Highlights from our annual day",
+  },
+  {
+    id: "lqKfyKB_ngM",
+    title: "Annual Day Celebration",
+    description: "Highlights from our annual day",
+  },
+  {
+    id: "AC-nztuwXew",
+    title: "Annual Day Celebration",
+    description: "Highlights from our annual day",
+  },
+  {
+    id: "nQiyOsFXxJM",
+    title: "Annual Day Celebration",
+    description: "Highlights from our annual day",
+  },
+  {
+    id: "mp0ul_M-Hss",
+    title: "Annual Day Celebration",
+    description: "Highlights from our annual day",
+  },
+  {
+    id: "HdeBH_6Y-QU",
+    title: "Annual Day Celebration",
+    description: "Highlights from our annual day",
   },
   {
     id: "rAd2kdq5Ggk",
@@ -20,8 +110,8 @@ const videos = [
   },
   {
     id: "_VQpIxDymMw",
-    title: "Our Mission",
-    description: "Learn about our work and mission",
+    title: "Annual Day Celebration",
+    description: "Highlights from our annual day",
   },
 ];
 

@@ -26,7 +26,7 @@ const formSchema = z.object({
     .string()
     .email("Invalid email address")
     .nonempty("Email is required"),
-  phone: z
+  phoneNo: z
     .string()
     .regex(/^\d{10}$/, "Phone number must be exactly 10 digits")
     .nonempty("Phone number is required"),
@@ -43,7 +43,7 @@ export default function Contact() {
     defaultValues: {
       name: "",
       email: "",
-      phone: "",
+      phoneNo: "",
       message: "",
     },
   });
@@ -54,11 +54,13 @@ export default function Contact() {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
     try {
-      // Use our local API endpoint
-      const response = await fetch("/api/contact", {
+      // Connect to Spring Boot server running on localhost:8080
+      const response = await fetch("http://localhost:8080/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          // Add CORS headers if needed
+          Accept: "application/json",
         },
         body: JSON.stringify(values),
       });
@@ -70,9 +72,15 @@ export default function Contact() {
         setTimeout(() => {
           setSubmitSuccess(false);
         }, 3000);
+      } else {
+        // Handle error response
+        const errorData = await response.json();
+        console.error("Server error:", errorData);
+        // You might want to show an error message to the user here
       }
     } catch (error) {
       console.error("Error submitting form:", error);
+      // You might want to show an error message to the user here
     } finally {
       setIsSubmitting(false);
     }
@@ -88,7 +96,8 @@ export default function Contact() {
               Get in Touch
             </h1>
             <p className="text-lg text-gray-600 mb-8">
-              आम्हाला तुमचे म्हणणे ऐकायला आवडेल. कृपया यापैकी कोणत्याही माध्यमाद्वारे आमच्याशी संपर्क साधा.
+              आम्हाला तुमचे म्हणणे ऐकायला आवडेल. कृपया यापैकी कोणत्याही
+              माध्यमाद्वारे आमच्याशी संपर्क साधा.
             </p>
 
             <div className="space-y-6">
@@ -201,7 +210,7 @@ export default function Contact() {
 
                 <FormField
                   control={form.control}
-                  name="phone"
+                  name="phoneNo"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="font-medium">Phone</FormLabel>
