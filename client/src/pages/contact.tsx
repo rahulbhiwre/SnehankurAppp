@@ -106,12 +106,21 @@ export default function Contact() {
                   Address
                 </h3>
                 <p className="text-gray-600">
+                  स्नेहांकुर सामाजिक प्रकल्प <br></br>
                   मापेगाव बु. (पुनर्वसन), परतूर-सेलु रोड,
                   <br />
                   तालुका परतूर, जिल्हा जालना
                   <br />
                   महाराष्ट्र, भारत 431501
                 </p>
+                <a
+                  href="https://maps.app.goo.gl/pZr4cFgn5bEZMyzaA"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-orange-500 hover:text-orange-600 font-semibold mt-2 inline-block"
+                >
+                  View on Google Maps
+                </a>
               </div>
 
               <div>
@@ -133,7 +142,7 @@ export default function Contact() {
                 </h3>
                 <div className="flex space-x-4">
                   <a
-                    href="https://www.facebook.com/rahul.bhiwre/"
+                    href="https://www.facebook.com/snehankura.samajika.prakalpa/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-gray-600 hover:text-primary"
@@ -141,7 +150,7 @@ export default function Contact() {
                     <FaFacebook size={24} />
                   </a>
                   <a
-                    href="https://www.instagram.com/rahulbhiwre/"
+                    href="https://www.instagram.com/snehankur.anath_aashram_partur/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-gray-600 hover:text-primary"
@@ -162,7 +171,7 @@ export default function Contact() {
           </div>
 
           {/* Contact Form */}
-          <div className="bg-white p-6 rounded-lg shadow-lg">
+          {/* <div className="bg-white p-6 rounded-lg shadow-lg">
             <h2 className="text-2xl font-semibold text-gray-900 mb-6">
               Send us a Message
             </h2>
@@ -277,7 +286,7 @@ export default function Contact() {
                 </Button>
               </form>
             </Form>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

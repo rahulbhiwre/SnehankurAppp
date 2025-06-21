@@ -1,4 +1,3 @@
-
 import { FaFacebook, FaInstagram, FaWhatsapp } from "react-icons/fa";
 import { Link } from "wouter";
 
@@ -9,10 +8,12 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Connect With Us */}
           <div>
-            <h3 className="text-lg font-semibold mb-4 text-orange-600">Connect With Us</h3>
+            <h3 className="text-lg font-semibold mb-4 text-orange-600">
+              Connect With Us
+            </h3>
             <div className="flex space-x-4 mb-4">
               <a
-                href="https://www.facebook.com/rahul.bhiwre/"
+                href="https://www.facebook.com/snehankura.samajika.prakalpa/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-600 hover:text-orange-500 transition-colors"
@@ -20,7 +21,7 @@ export default function Footer() {
                 <FaFacebook size={24} />
               </a>
               <a
-                href="https://www.instagram.com/rahulbhiwre/"
+                href="https://www.instagram.com/snehankur.anath_aashram_partur/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-600 hover:text-orange-500 transition-colors"
@@ -44,30 +45,47 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-4 text-orange-600">Quick Links</h3>
+            <h3 className="text-lg font-semibold mb-4 text-orange-600">
+              Quick Links
+            </h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/" className="text-gray-600 hover:text-orange-500 transition-colors">
+                <Link
+                  href="/"
+                  className="text-gray-600 hover:text-orange-500 transition-colors"
+                >
                   Home
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="text-gray-600 hover:text-orange-500 transition-colors">
+                <Link
+                  href="/about"
+                  className="text-gray-600 hover:text-orange-500 transition-colors"
+                >
                   About Us
                 </Link>
               </li>
               <li>
-                <Link href="/gallery" className="text-gray-600 hover:text-orange-500 transition-colors">
+                <Link
+                  href="/gallery"
+                  className="text-gray-600 hover:text-orange-500 transition-colors"
+                >
                   Gallery
                 </Link>
               </li>
               <li>
-                <Link href="/donate" className="text-gray-600 hover:text-orange-500 transition-colors">
+                <Link
+                  href="/donate"
+                  className="text-gray-600 hover:text-orange-500 transition-colors"
+                >
                   Donate
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-gray-600 hover:text-orange-500 transition-colors">
+                <Link
+                  href="/contact"
+                  className="text-gray-600 hover:text-orange-500 transition-colors"
+                >
                   Contact
                 </Link>
               </li>
@@ -76,9 +94,12 @@ export default function Footer() {
 
           {/* Address */}
           <div>
-            <h3 className="text-lg font-semibold mb-4 text-orange-600">Our Address</h3>
+            <h3 className="text-lg font-semibold mb-4 text-orange-600">
+              Our Address
+            </h3>
             <address className="text-gray-600 text-sm not-italic">
               <p className="mb-3">
+                स्नेहांकुर सामाजिक प्रकल्प <br></br>
                 मापेगाव बु. (पुनर्वसन), <br />
                 परतूर-सेलु रोड, <br />
                 तालुका परतूर, जिल्हा जालना

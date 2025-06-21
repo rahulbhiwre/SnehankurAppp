@@ -9,7 +9,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   const navigation = [
-    { name: "Home", href: "/snehankurr" },
+    { name: "Home", href: "/" },
     { name: "About", href: "/about" },
     { name: "Gallery", href: "/gallery" },
     { name: "Donate", href: "/donate" },

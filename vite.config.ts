@@ -2,8 +2,6 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
 
-
-
 export default defineConfig({
   plugins: [react()],
   root: "client",
@@ -20,5 +18,5 @@ export default defineConfig({
     port: 8081,
     open: true,
   },
-  base: "/snehankurr", // Replace with your repository name
+  base: "", // Replace with your repository name
 });

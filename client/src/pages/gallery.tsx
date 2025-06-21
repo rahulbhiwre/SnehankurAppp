@@ -6,6 +6,17 @@ import "yet-another-react-lightbox/styles.css";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
+interface GitHubFile {
+  name: string;
+  download_url: string;
+}
+
+interface ImageItem {
+  src: string;
+  alt: string;
+  category: string;
+}
+
 // Videos with specific YouTube ID
 const videos = [
   {
@@ -119,8 +130,8 @@ export default function Gallery() {
   const [isOpen, setIsOpen] = useState(false);
   const [photoIndex, setPhotoIndex] = useState(0);
   const [activeTab, setActiveTab] = useState("photos");
-  const [photoSectionImages, setPhotoSectionImages] = useState([]);
-  const [mediaPhotos, setMediaPhotos] = useState([]);
+  const [photoSectionImages, setPhotoSectionImages] = useState<ImageItem[]>([]);
+  const [mediaPhotos, setMediaPhotos] = useState<ImageItem[]>([]);
   const [selectedVideoUrl, setSelectedVideoUrl] = useState("");
   const [videoDialogOpen, setVideoDialogOpen] = useState(false);
   const [mediaPhotoIndex, setMediaPhotoIndex] = useState(0);
@@ -149,7 +160,7 @@ export default function Gallery() {
 
         // Filter for image files in photos folder
         const photoFiles = photosFolderContents.filter(
-          (file) =>
+          (file: GitHubFile) =>
             file.name.toLowerCase().endsWith(".jpg") ||
             file.name.toLowerCase().endsWith(".jpeg") ||
             file.name.toLowerCase().endsWith(".png")
@@ -157,25 +168,29 @@ export default function Gallery() {
 
         // Filter for image files in news folder
         const newsPhotoFiles = newsFolderContents.filter(
-          (file) =>
+          (file: GitHubFile) =>
             file.name.toLowerCase().endsWith(".jpg") ||
             file.name.toLowerCase().endsWith(".jpeg") ||
             file.name.toLowerCase().endsWith(".png")
         );
 
         // Create image objects for each photo
-        const photosFromGithub = photoFiles.map((file, index) => ({
-          src: file.download_url,
-          alt: `Snehankur Photo ${index + 1}`,
-          category: "Activities",
-        }));
+        const photosFromGithub = photoFiles.map(
+          (file: GitHubFile, index: number) => ({
+            src: file.download_url,
+            alt: `Snehankur Photo ${index + 1}`,
+            category: "Activities",
+          })
+        );
 
         // Create image objects for media section
-        const mediaFromGithub = newsPhotoFiles.map((file, index) => ({
-          src: file.download_url,
-          alt: `Snehankur Media Item ${index + 1}`,
-          category: "News",
-        }));
+        const mediaFromGithub = newsPhotoFiles.map(
+          (file: GitHubFile, index: number) => ({
+            src: file.download_url,
+            alt: `Snehankur Media Item ${index + 1}`,
+            category: "News",
+          })
+        );
 
         // Update photos for the Photos tab - only use GitHub photos
         setPhotoSectionImages(photosFromGithub);
@@ -190,12 +205,12 @@ export default function Gallery() {
     fetchGitHubPhotos();
   }, []);
 
-  const openLightbox = (index) => {
+  const openLightbox = (index: number) => {
     setPhotoIndex(index);
     setIsOpen(true);
   };
 
-  const openVideoDialog = (videoId) => {
+  const openVideoDialog = (videoId: string) => {
     setSelectedVideoUrl(`https://www.youtube.com/embed/${videoId}?autoplay=1`);
     setVideoDialogOpen(true);
   };

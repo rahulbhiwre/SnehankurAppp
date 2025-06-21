@@ -48,12 +48,13 @@ export default function About() {
                   <span className="text-white text-2xl font-bold">15+</span>
                 </div>
                 <h3 className="text-2xl font-bold text-center mb-4 text-gray-800">
-                  Children Supported
+                  मुलांना आधार
                 </h3>
                 <p className="text-gray-600 text-center">
-                  We've provided education, shelter, and care to over 1000
-                  children since our inception, nurturing their growth and
-                  development.
+                  आमच्या स्थापनेपासून आजपर्यंत आम्ही १५ हून अधिक मुलांना शिक्षण,
+                  निवारा आणि प्रेमळ संगोपन दिला आहे. त्यांच्या वाढीव विकासासाठी
+                  आम्ही आवश्यक ती संपूर्ण मदत आणि मार्गदर्शन पुरवले आहे,
+                  ज्यामुळे त्यांच्यात आत्मविश्वास व स्वावलंबन निर्माण झाले आहे.
                 </p>
               </div>
             </motion.div>
@@ -78,12 +79,13 @@ export default function About() {
                   </span>
                 </div>
                 <h3 className="text-2xl font-bold text-center mb-4 text-gray-800">
-                  Years of Service
+                  सेवेची वर्षे
                 </h3>
                 <p className="text-gray-600 text-center">
-                  Dedicated to serving underprivileged children for over{" "}
-                  {years_of_service} years. with unwavering commitment to their
-                  wellbeing.
+                  आम्ही {years_of_service} हून अधिक वर्षांपासून गरजू आणि वंचित
+                  मुलांची सेवा करण्यास समर्पित आहोत. त्यांच्या कल्याणासाठी आमची
+                  सेवा नि:स्वार्थ आणि सातत्यपूर्ण असून, त्यांना उज्वल भविष्याची
+                  दिशा देणे हेच आमचे ध्येय आहे.
                 </p>
               </div>
             </motion.div>
@@ -106,11 +108,13 @@ export default function About() {
                   <span className="text-white text-2xl font-bold">5+</span>
                 </div>
                 <h3 className="text-2xl font-bold text-center mb-4 text-gray-800">
-                  Awards
+                  पुरस्कार
                 </h3>
                 <p className="text-gray-600 text-center">
-                  Recognized with more than 5 prestigious awards for our
-                  outstanding contribution to child welfare andeducation.
+                  बालकल्याण आणि शिक्षण क्षेत्रातील उल्लेखनीय योगदानासाठी ५ हून
+                  अधिक प्रतिष्ठित पुरस्कारांनी आम्हाला गौरविण्यात आले आहे. हे
+                  पुरस्कार आमच्या निरंतर सेवाभावनेचे व गुणवत्तापूर्ण कार्याचे
+                  प्रमाण आहेत.
                 </p>
               </div>
             </motion.div>
@@ -356,103 +360,6 @@ export default function About() {
           </motion.div>
         </div>
 
-        {/* Our Team Section */}
-        <div className="mb-24">
-          <motion.h2
-            className="text-3xl font-bold text-gray-900 text-center mb-12 relative inline-block"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
-          >
-            <span className="after:content-[''] after:absolute after:w-full after:h-1 after:bg-orange-400 after:bottom-0 after:left-0">
-              Our Team
-            </span>
-          </motion.h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Team Member 1 */}
-            <motion.div
-              className="bg-white p-6 rounded-lg shadow-lg text-center"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              whileHover={{
-                y: -10,
-                boxShadow:
-                  "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
-              }}
-            >
-              <div className="w-24 h-24 rounded-full mx-auto mb-6 overflow-hidden border-4 border-orange-200">
-                <img
-                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&q=80"
-                  alt="Founder"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <h3 className="text-xl font-bold mb-2">Anita Sharma</h3>
-              <p className="text-orange-600 mb-4">Founder</p>
-              <p className="text-gray-600">
-                Dedicated her life to creating a safe haven for children in
-                need, with over 20 years of experience in child welfare.
-              </p>
-            </motion.div>
-
-            {/* Team Member 2 */}
-            <motion.div
-              className="bg-white p-6 rounded-lg shadow-lg text-center"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              whileHover={{
-                y: -10,
-                boxShadow:
-                  "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
-              }}
-            >
-              <div className="w-24 h-24 rounded-full mx-auto mb-6 overflow-hidden border-4 border-orange-200">
-                <img
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&q=80"
-                  alt="Director"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <h3 className="text-xl font-bold mb-2">Rajesh Patel</h3>
-              <p className="text-orange-600 mb-4">Executive Director</p>
-              <p className="text-gray-600">
-                Brings strategic vision and operational excellence to our
-                organization with his background in education management.
-              </p>
-            </motion.div>
-
-            {/* Team Member 3 */}
-            <motion.div
-              className="bg-white p-6 rounded-lg shadow-lg text-center"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              whileHover={{
-                y: -10,
-                boxShadow:
-                  "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
-              }}
-            >
-              <div className="w-24 h-24 rounded-full mx-auto mb-6 overflow-hidden border-4 border-orange-200">
-                <img
-                  src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=150&h=150&fit=crop&q=80"
-                  alt="Education Lead"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <h3 className="text-xl font-bold mb-2">Priya Desai</h3>
-              <p className="text-orange-600 mb-4">Education Program Lead</p>
-              <p className="text-gray-600">
-                Passionate educator who designs our curriculum and mentoring
-                programs to give our children the best learning opportunities.
-              </p>
-            </motion.div>
-          </div>
-        </div>
-
         {/* Call to Action */}
         <motion.div
           className="bg-gradient-to-r from-orange-400 to-orange-600 rounded-xl p-10 text-white text-center shadow-xl"
@@ -461,10 +368,13 @@ export default function About() {
           transition={{ duration: 0.8, delay: 0.5 }}
           whileHover={{ scale: 1.02 }}
         >
-          <h2 className="text-3xl font-bold mb-4">Join Our Mission</h2>
+          <h2 className="text-3xl font-bold mb-4">
+            आमच्या ध्येयामध्ये सहभागी व्हा{" "}
+          </h2>
           <p className="text-lg mb-8 max-w-2xl mx-auto">
-            Whether through volunteering, donations, or spreading awareness, you
-            can make a significant difference in a child's life.
+            स्वयंसेवा, आर्थिक मदत किंवा जनजागृती यांपैकी कोणत्याही मार्गाने
+            तुम्ही एका मुलाच्या आयुष्यात सकारात्मक बदल घडवू शकता. तुमचा छोटासा
+            सहभागही त्यांच्या उज्ज्वल भविष्याकडे एक मोठे पाऊल ठरू शकतो.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <motion.a
