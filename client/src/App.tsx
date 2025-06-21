@@ -18,10 +18,10 @@ function Router() {
       <main className="flex-grow">
         <Switch>
           <Route path="/snehankurr" component={Home} />
-          <Route path="/about" component={About} />
-          <Route path="/gallery" component={Gallery} />
-          <Route path="/donate" component={Donate} />
-          <Route path="/contact" component={Contact} />
+          <Route path="/snehankurr/about" component={About} />
+          <Route path="/snehankurr/gallery" component={Gallery} />
+          <Route path="/snehankurr/donate" component={Donate} />
+          <Route path="/snehankurr/contact" component={Contact} />
           <Route component={NotFound} />
         </Switch>
       </main>

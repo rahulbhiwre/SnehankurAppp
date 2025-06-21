@@ -378,7 +378,7 @@ export default function About() {
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <motion.a
-              href="/donate"
+              href="/snehankurr/donate"
               className="bg-white text-orange-600 font-bold py-3 px-8 rounded-full shadow-md hover:shadow-lg transition-all"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -386,7 +386,7 @@ export default function About() {
               Donate
             </motion.a>
             <motion.a
-              href="/contact"
+              href="/snehankurr/contact"
               className="bg-transparent border-2 border-white text-white font-bold py-3 px-8 rounded-full shadow-md hover:shadow-lg transition-all"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
