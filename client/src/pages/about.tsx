@@ -1,7 +1,9 @@
 import { motion } from "framer-motion";
+import { useLocation } from "wouter";
 const years_of_service = new Date().getFullYear() - 2017;
 
 export default function About() {
+  const [, setLocation] = useLocation();
   return (
     <div className="py-16 px-4 sm:px-6 lg:px-8 bg-orange-50">
       <div className="max-w-7xl mx-auto">
@@ -382,6 +384,10 @@ export default function About() {
               className="bg-white text-orange-600 font-bold py-3 px-8 rounded-full shadow-md hover:shadow-lg transition-all"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={(e) => {
+                e.preventDefault();
+                setLocation("/snehankurr/donate");
+              }}
             >
               Donate
             </motion.a>
@@ -390,6 +396,10 @@ export default function About() {
               className="bg-transparent border-2 border-white text-white font-bold py-3 px-8 rounded-full shadow-md hover:shadow-lg transition-all"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={(e) => {
+                e.preventDefault();
+                setLocation("/snehankurr/contact");
+              }}
             >
               Contact Us
             </motion.a>
