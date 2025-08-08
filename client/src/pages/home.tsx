@@ -20,7 +20,7 @@ export default function Home() {
               <br />- बाबा आमटे
             </p>
             <div className="flex justify-center gap-4">
-              <Link href="/donate">
+              <Link href="/snehankurr/donate">
                 <Button
                   size="lg"
                   className="bg-orange-500 hover:bg-orange-600 text-white"
@@ -28,7 +28,7 @@ export default function Home() {
                   Donate
                 </Button>
               </Link>
-              <Link href="/contact">
+              <Link href="/snehankurr/contact">
                 <Button variant="outline" size="lg">
                   Contact Us
                 </Button>
