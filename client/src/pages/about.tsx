@@ -275,7 +275,7 @@ export default function About() {
               transition={{ duration: 0.3 }}
             >
               <img
-                src="https://images.unsplash.com/photo-1560702226-a2317a8d6210?q=80&w=3088&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                src="https://github.com/snehankur-family/website-photos/blob/main/home-page/IMG-20250316-WA0002.jpg?raw=true"
                 alt="The Beginning"
                 className="rounded-lg shadow-xl object-cover w-full max-w-md h-64"
               />
